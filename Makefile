@@ -30,7 +30,7 @@ EXE_NAME1 =
 LIB_NAME = libCTARTA
 VER_FILE_NAME = version.h
 #the name of the directory where the conf file are copied (into $(datadir))
-CONF_DEST_DIR = libql3
+CONF_DEST_DIR = idb
 #the name of the icon for the installation
 ICON_NAME=
 
@@ -184,7 +184,7 @@ $(DOXY_SOURCE_DIR)/%.cpp : %.cpp
 #all: compile the entire program.
 all: lib
 		#only if conf directory is present:
-		#$(SYMLINK) $(CONF_DIR) $(CONF_DEST_DIR)
+#$(SYMLINK) $(CONF_DIR) $(CONF_DEST_DIR)
 
 lib: staticlib 
 	
@@ -247,17 +247,17 @@ install: all
 	# For library installation
 	#test -d $(libdir) || mkdir -p $(libdir)
 	#test -d $(includedir) || mkdir -p $(includedir)	
-	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGETA) $(libdir)
+	$(COPY_FILE) $(LIB_DESTDIR)/$(TARGETA) $(libdir)
 	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET0) $(libdir)
 	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET1) $(libdir)
 	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET2) $(libdir)
 	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGETD) $(libdir)
-	#$(COPY_FILE) $(INCLUDE) $(includedir)
+	$(COPY_FILE) $(INCLUDE) $(includedir)
 	
 	# For exe installation
 	test -d $(bindir) || mkdir -p $(bindir)	
-	$(COPY_FILE) $(EXE_DESTDIR)/$(EXE_NAME1) $(bindir)
-	$(COPY_FILE) $(EXE_DESTDIR)/$(EXE_NAME2) $(bindir)
+#$(COPY_FILE) $(EXE_DESTDIR)/$(EXE_NAME1) $(bindir)
+#	$(COPY_FILE) $(EXE_DESTDIR)/$(EXE_NAME2) $(bindir)
 	
 	#copy icon
 	#test -d $(icondir) || mkdir -p $(icondir)
