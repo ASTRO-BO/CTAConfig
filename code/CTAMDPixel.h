@@ -13,20 +13,17 @@ namespace CTAConfig {
 		int16_t ID;
 		CTAMDCoordinate* tubeMM;
 		CTAMDCoordinate* tubeDeg;
-		int16_t tubeOFF;
 		CTAMDPixelType* pixelType;
 
 	public:
 		
-		CTAMDPixel(int16_t pixelID, CTAMDCoordinate* tubeMM, CTAMDCoordinate* tubeDeg, int16_t tubeOFF, CTAMDPixelType* pixelType);
+		CTAMDPixel(int16_t pixelID, CTAMDCoordinate* tubeMM, CTAMDCoordinate* tubeDeg, CTAMDPixelType* pixelType);
 		
 		int16_t getID();
 
 		CTAMDCoordinate* getTubeMM();
 
 		CTAMDCoordinate* getTubeDeg();
-
-		int16_t getTubeOFF();
 
 		CTAMDPixelType* getPixelType();
 	};

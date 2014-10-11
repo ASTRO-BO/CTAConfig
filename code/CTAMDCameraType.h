@@ -2,6 +2,7 @@
 #define _CTAMDCAMERATYPE_H
 
 #include <vector>
+#include <string>
 #include "CTAMDPixel.h"
 
 using namespace std;
@@ -13,23 +14,30 @@ namespace CTAConfig {
 		float cameraScaleFactor;
 		float cameraCentreOffset;
 		float cameraRotation;
-		int NTubesOff;
-		short npixels;
-		short npixels_active;
-		vector<CTAMDPixel> pixels;
+		
+		vector<CTAMDPixel*> pixels;
+		int camTypeID;
+		string camTypeName;
+		
 
 	public:
+		
+		CTAMDCameraType(int camTypeID, string camTypeName, float cameraScaleFactor, float cameraCentreOffset, float cameraRotation);
+		
+		void addPixel(CTAMDPixel* pixel);
+		
+		int getCamTypeID();
+		
+		string getCamTypeName();
+		
 		float getCameraScaleFactor();
 
 		float getCameraCentreOffset();
 
 		float getCameraRotation();
 
-		int getNTubesOff();
+		int16_t getNpixels();
 
-		short getNpixels();
-
-		short getNpixels_active();
 	};
 }
 #endif

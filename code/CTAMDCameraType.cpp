@@ -1,5 +1,25 @@
 #include "CTAMDCameraType.h"
 
+CTAConfig::CTAMDCameraType::CTAMDCameraType(int camTypeID, string camTypeName, float cameraScaleFactor, float cameraCentreOffset, float cameraRotation) {
+	this->camTypeID = camTypeID;
+	this->camTypeName = camTypeName;
+	this->cameraScaleFactor = cameraScaleFactor;
+	this->cameraCentreOffset = cameraCentreOffset;
+	this->cameraRotation = cameraRotation;
+}
+
+void CTAConfig::CTAMDCameraType::addPixel(CTAMDPixel* pixel) {
+	pixels.push_back(pixel);
+}
+
+int CTAConfig::CTAMDCameraType::getCamTypeID() {
+	return this->camTypeID;
+}
+
+string CTAConfig::CTAMDCameraType::getCamTypeName() {
+	return this->camTypeName;
+}
+
 float CTAConfig::CTAMDCameraType::getCameraScaleFactor() {
 	return this->cameraScaleFactor;
 }
@@ -12,14 +32,9 @@ float CTAConfig::CTAMDCameraType::getCameraRotation() {
 	return this->cameraRotation;
 }
 
-int CTAConfig::CTAMDCameraType::getNTubesOff() {
-	return this->NTubesOff;
-}
+
 
 short CTAConfig::CTAMDCameraType::getNpixels() {
-	return this->npixels;
+	return this->pixels.size();
 }
 
-short CTAConfig::CTAMDCameraType::getNpixels_active() {
-	return this->npixels_active;
-}
