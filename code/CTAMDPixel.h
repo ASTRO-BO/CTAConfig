@@ -3,26 +3,30 @@
 
 #include "CTAMDCoordinate.h"
 #include "CTAMDPixelType.h"
+#include <stdlib.h>
 
 namespace CTAConfig {
 	
 	class CTAMDPixel {
 
 	private:
-		short ID;
+		int16_t ID;
 		CTAMDCoordinate* tubeMM;
 		CTAMDCoordinate* tubeDeg;
-		short tubeOFF;
+		int16_t tubeOFF;
 		CTAMDPixelType* pixelType;
 
 	public:
-		short getID();
+		
+		CTAMDPixel(int16_t pixelID, CTAMDCoordinate* tubeMM, CTAMDCoordinate* tubeDeg, int16_t tubeOFF, CTAMDPixelType* pixelType);
+		
+		int16_t getID();
 
 		CTAMDCoordinate* getTubeMM();
 
 		CTAMDCoordinate* getTubeDeg();
 
-		short getTubeOFF();
+		int16_t getTubeOFF();
 
 		CTAMDPixelType* getPixelType();
 	};

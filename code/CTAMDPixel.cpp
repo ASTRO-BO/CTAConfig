@@ -1,6 +1,14 @@
 #include "CTAMDPixel.h"
 
-short CTAConfig::CTAMDPixel::getID() {
+CTAConfig::CTAMDPixel::CTAMDPixel(int16_t pixelID, CTAMDCoordinate* tubeMM, CTAMDCoordinate* tubeDeg, int16_t tubeOFF, CTAMDPixelType* pixelType) {
+	this->ID = pixelID;
+	this->tubeMM = tubeMM;
+	this->tubeDeg = tubeDeg;
+	this->tubeOFF = tubeOFF;
+	this->pixelType = pixelType;
+}
+
+int16_t CTAConfig::CTAMDPixel::getID() {
 	return ID;
 }
 
@@ -12,7 +20,7 @@ CTAConfig::CTAMDCoordinate* CTAConfig::CTAMDPixel::getTubeDeg() {
 	return this->tubeDeg;
 }
 
-short CTAConfig::CTAMDPixel::getTubeOFF() {
+int16_t CTAConfig::CTAMDPixel::getTubeOFF() {
 	return this->tubeOFF;
 }
 
