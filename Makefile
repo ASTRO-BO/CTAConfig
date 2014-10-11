@@ -26,7 +26,7 @@ SHELL = /bin/sh
 SYSTEM= $(shell gcc -dumpmachine)
 #ice, ctarta, mpi, cfitsio
 LINKERENV=  cfitsio
-EXE_NAME1 =
+EXE_NAME1 = test
 LIB_NAME = libCTAconfig
 VER_FILE_NAME = version.h
 #the name of the directory where the conf file are copied (into $(datadir))
@@ -75,7 +75,7 @@ CC = gcc
 
 #Set INCPATH to add the inclusion paths
 INCPATH = -I $(INCLUDE_DIR) -I $(CTARTA)/include -L$(CTARTA)/lib
-LIBS = -lstdc++
+LIBS = -lstdc++ -lQLBase
 #Insert the optional parameter to the compiler. The CFLAGS could be changed externally by the user
 CFLAGS   = -g
 #Insert the implicit parameter to the compiler:
@@ -182,7 +182,7 @@ $(DOXY_SOURCE_DIR)/%.cpp : %.cpp
 ####### 10) Build rules
 
 #all: compile the entire program.
-all: lib
+all:  exe
 		#only if conf directory is present:
 #$(SYMLINK) $(CONF_DIR) $(CONF_DEST_DIR)
 

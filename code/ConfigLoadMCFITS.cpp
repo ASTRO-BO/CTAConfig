@@ -21,7 +21,116 @@
 #define CONF_L1HEADER 2
 
 CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
+	/// structure declaration
+	struct PixelType temp_pixtype;
+	struct Pixel temp_pixel;
+	struct CameraType temp_camtype;
+	struct MirrorType temp_mirtype;
+	struct TelescopeType temp_teltype;
+	struct Telescope temp_tel;
 	
+	/// FITS structure parameters definition
+	//int conf_Nheader;
+	int conf_Nrows_L0;
+	int conf_Nrows_L1;
+	
+	/// Column number
+	int L0ID_colnum;
+	int TelID_colnum;
+	int TelType_colnum;
+	int TelX_colnum;
+	int TelY_colnum;
+	int TelZ_colnum;
+	int FL_colnum;
+	int FOV_colnum;
+	int CameraScaleFactor_colnum;
+	int CameraCentreOffset_colnum;
+	int CameraRotation_colnum;
+	int NPixel_colnum;
+	int NPixel_active_colnum;
+	int NSamples_colnum;
+	int Sample_time_slice_colnum;
+	int NGains_colnum;
+	int HiLoScale_colnum;
+	int HiLoThreshold_colnum;
+	int HiLoOffset_colnum;
+	int NTubesOFF_colnum;
+	int NMirrors_colnum;
+	int MirrorArea_colnum;
+	
+	int L1ID_colnum;
+	int L0ID_L1_colnum;
+	int PixelID_colnum;
+	int XTubeMM_colnum;
+	int YTubeMM_colnum;
+	int RTubeMM_colnum;
+	int XTubeDeg_colnum;
+	int YTubeDeg_colnum;
+	int RTubeDeg_colnum;
+	int TubeOFF_colnum;
+	
+	/// Vector declaration
+	vector<int64_t> vecL0ID;
+	vector<int16_t> vecTelID;
+	vector<int64_t> vecTelType;
+	vector<float> vecTelX;
+	vector<float> vecTelY;
+	vector<float> vecTelZ;
+	vector<float> vecFL;
+	vector<float> vecFOV;
+	vector<float> vecCameraScaleFactor;
+	vector<float> vecCameraCentreOffset;
+	vector<float> vecCameraRotation;
+	vector<int16_t> vecNPixel;
+	vector<int16_t> vecNPixel_active;
+	vector<int16_t> vecNSamples;
+	vector<float> vecSample_time_slice;
+	vector<int16_t> vecNGains;
+	vector<float> vecHiLoScale;
+	vector<int16_t> vecHiLoThreshold;
+	vector<float> vecHiLoOffset;
+	vector<int16_t> vecNTubesOFF;
+	vector<int16_t> vecNMirrors;
+	vector<float> vecMirrorArea;
+	
+	vector<int64_t> vecL1ID;
+	vector<int64_t> vecL0ID_L1;
+	vector<int16_t> vecPixelID;
+	vector<float> vecXTubeMM;
+	vector<float> vecYTubeMM;
+	vector<float> vecRTubeMM;
+	vector<float> vecXTubeDeg;
+	vector<float> vecYTubeDeg;
+	vector<float> vecRTubeDeg;
+	vector<int16_t> vecTubeOFF;
+	
+	/// Vectors for the identification of the telescope type metadata
+	vector<int64_t> vecUniqueTelType;
+	vector<float> vecUniqueMirrorArea;
+	vector<float> vecUniqueFL;
+	vector<float> vecUniqueFOV;
+	vector<float> vecUniqueCameraScaleFactor;
+	vector<float> vecUniqueCameraCentreOffset;
+	vector<float> vecUniqueCameraRotation;
+	vector<int16_t> vecUniqueNTubesOFF;
+	vector<int16_t> vecUniqueNMirrors;
+	vector<int16_t> vecUniqueNPixel;
+	vector<int16_t> vecUniqueNPixel_active;
+	vector<int16_t> vecUniqueNSamples;
+	vector<float> vecUniqueSample_time_slice;
+	vector<int16_t> vecUniqueNGains;
+	vector<float> vecUniqueHiLoScale;
+	vector<int16_t> vecUniqueHiLoThreshold;
+	vector<float> vecUniqueHiLoOffset;
+	vector<int16_t> vecUniquePixelID;
+	vector<float> vecUniqueXTubeMM;
+	vector<float> vecUniqueYTubeMM;
+	vector<float> vecUniqueRTubeMM;
+	vector<float> vecUniqueXTubeDeg;
+	vector<float> vecUniqueYTubeDeg;
+	vector<float> vecUniqueRTubeDeg;
+	vector<int16_t> vecUniqueTubeOFF;
+
 	try {
 		
 		
@@ -30,14 +139,14 @@ CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 			conf_file.open(confInputFileName);
 			//conf_Nheader = conf_file.getHeadersNum();
             //cout << "Number of headers: " << conf_Nheader << endl;
-            
+			
 			
             /// Moving to the Telescope level Header L0
             conf_file.moveToHeader(CONF_L0HEADER);
-            
+			
             /// Loading the number of rows
             conf_Nrows_L0 = conf_file.getNRows();
-            
+			
             /// Loading the data
             L0ID_colnum = conf_file.getColNum("L0ID");
             TelID_colnum = conf_file.getColNum("TelID");
@@ -123,11 +232,11 @@ CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 			/// Setting the Telescope structure objects
 			for(int i=0; i<array.NTel; i++) {
 				temp_tel.TelID = vecTelID[i];
-				temp_tel.fromTeltoTelType.TelType = vecTelType[i];
+				temp_tel.telescopeType.TelType = vecTelType[i];
 				temp_tel.TelX = vecTelX[i];
 				temp_tel.TelY = vecTelY[i];
 				temp_tel.TelZ = vecTelZ[i];
-				telescope.push_back(temp_tel);
+				telescopes.push_back(temp_tel);
 			}
 			
 			/// Setting the TelescopeType structure
@@ -200,9 +309,9 @@ CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 			
 			for(int i=0; i<NTelType; i++) {
 				temp_teltype.TelType = vecUniqueTelType[i];
-				temp_teltype.fromTelTypetoMirType.mirType = i+1;
-				temp_teltype.fromTelTypetoCamType.camType = i+1;
-				telescopeType.push_back(temp_teltype);
+				temp_teltype.mirrorType.mirType = i+1;
+				temp_teltype.cameraType.camType = i+1;
+				telescopeTypes.push_back(temp_teltype);
 			}
             
 			/// Setting the MirrorType structure
@@ -213,7 +322,7 @@ CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 				temp_mirtype.NTubesOFF =  vecUniqueNTubesOFF[i];
 				temp_mirtype.NMirrors =  vecUniqueNMirrors[i];
 				temp_mirtype.MirrorArea =  vecUniqueMirrorArea[i];
-				mirrorType.push_back(temp_mirtype);
+				mirrorTypes.push_back(temp_mirtype);
 			}
 			
 			/// Setting the CameraType structure
@@ -226,7 +335,7 @@ CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 				temp_camtype.CameraRotation = vecUniqueCameraRotation[i];
 				temp_camtype.NPixel = vecUniqueNPixel[i];
 				temp_camtype.NPixel_active = vecUniqueNPixel_active[i];
-				temp_camtype.fromCameratoPixType.pixType = i+1;
+				temp_camtype.pixelType.pixType = i+1;
                 
                 pixels[i].resize(vecUniqueNPixel[i]);					
 				for(int j=0; j<vecUniqueNPixel[i]; j++) {
@@ -238,12 +347,12 @@ CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 					temp_pixel.YTubeDeg = vecUniqueYTubeDeg[prevNPixel + j];
 					temp_pixel.RTubeDeg = vecUniqueRTubeDeg[prevNPixel + j];
 					temp_pixel.TubeOFF = vecUniqueTubeOFF[prevNPixel + j];
-					temp_camtype.fromCameratoPixel.push_back(temp_pixel);
+					temp_camtype.pixels.push_back(temp_pixel);
 					pixels[i][j] = temp_pixel;
 					}
     			prevNPixel = prevNPixel + vecUniqueNPixel[i];
             
-				cameraType.push_back(temp_camtype);
+				cameraTypes.push_back(temp_camtype);
 				
 			}
 			
@@ -256,75 +365,76 @@ CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 				temp_pixtype.HiLoScale =  vecUniqueHiLoScale[i];
 				temp_pixtype.HiLoThreshold =  vecUniqueHiLoThreshold[i];
 				temp_pixtype.HiLoOffset =  vecUniqueHiLoOffset[i];
-				pixelType.push_back(temp_pixtype);
+				pixelTypes.push_back(temp_pixtype);
 			}
 			
             
 		}
-        
-        
+		
+		
 	}
 	catch (qlbase::IOException& e) {
 		cout << "ERROR: File "<< confInputFileName <<" does not exist. Error code: " << e.getErrorCode() << endl;
 	}
 }
 
-struct CTAConfig::ConfigLoadMCFITS::Array *CTAConfig::ConfigLoadMCFITS::getArrayStruct() {
+struct CTAConfig::ConfigLoadMCFITS::Array *CTAConfig::ConfigLoadMCFITS::getArray() {
 	return &array;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::Telescope *CTAConfig::ConfigLoadMCFITS::getTelescopeStruct(int TelID) {
+struct CTAConfig::ConfigLoadMCFITS::Telescope *CTAConfig::ConfigLoadMCFITS::getTelescope(int TelID) {
 	for (int i=0; i<array.NTel; i++) {
-    	if (telescope[i].TelID == TelID){
-    		return &telescope[i];
+    	if (telescopes[i].TelID == TelID){
+    		return &telescopes[i];
     	} 
     }
+	return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::TelescopeType *CTAConfig::ConfigLoadMCFITS::getTelescopeTypeStruct(int TelType) {
+struct CTAConfig::ConfigLoadMCFITS::TelescopeType *CTAConfig::ConfigLoadMCFITS::getTelescopeType(int TelType) {
 	for (int i=0; i<NTelType; i++) {
-    	if (telescopeType[i].TelType == TelType){
-    		return &telescopeType[i];
+    	if (telescopeTypes[i].TelType == TelType){
+    		return &telescopeTypes[i];
     	}
     }
-    //return 0;
+    return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::MirrorType *CTAConfig::ConfigLoadMCFITS::getMirrorTypeStruct(int mirType) {
+struct CTAConfig::ConfigLoadMCFITS::MirrorType *CTAConfig::ConfigLoadMCFITS::getMirrorType(int mirType) {
 	for (int i=0; i<NTelType; i++) {
-    	if (mirrorType[i].mirType == mirType){
-    		return &mirrorType[i];
+    	if (mirrorTypes[i].mirType == mirType){
+    		return &mirrorTypes[i];
     	}
     }
-    //return 0;
+    return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::CameraType *CTAConfig::ConfigLoadMCFITS::getCameraTypeStruct(int camType) {
+struct CTAConfig::ConfigLoadMCFITS::CameraType *CTAConfig::ConfigLoadMCFITS::getCameraType(int camType) {
 	for (int i=0; i<NTelType; i++) {
-    	if (cameraType[i].camType == camType){
-    		return &cameraType[i];
+    	if (cameraTypes[i].camType == camType){
+    		return &cameraTypes[i];
     	}
     }
-    //return 0;
+    return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::PixelType *CTAConfig::ConfigLoadMCFITS::getPixelTypeStruct(int pixType) {
+struct CTAConfig::ConfigLoadMCFITS::PixelType *CTAConfig::ConfigLoadMCFITS::getPixelType(int pixType) {
 	for (int i=0; i<NTelType; i++) {
-    	if (pixelType[i].pixType == pixType){
-    		return &pixelType[i];
+    	if (pixelTypes[i].pixType == pixType){
+    		return &pixelTypes[i];
     	}
     }
-    //return 0;
+    return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::Pixel *CTAConfig::ConfigLoadMCFITS::getPixelStruct(int camType, int pixelID) {
+struct CTAConfig::ConfigLoadMCFITS::Pixel *CTAConfig::ConfigLoadMCFITS::getPixel(int camType, int pixelID) {
 	//vector<struct CTAConfig::ConfigLoadMCFITS::Pixel> *selPixel;
 	for (int i=0; i<NTelType; i++) {
-    	if (cameraType[i].camType == camType){    	
+    	if (cameraTypes[i].camType == camType){
     	    return &pixels[i][pixelID];
     	}
     }
-    //return 0;
+    return 0;
 }
 
 CTAConfig::ConfigLoadMCFITS::~ConfigLoadMCFITS() {
