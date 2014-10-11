@@ -1,28 +1,37 @@
 #ifndef _CTAMDPIXELTYPE_H
 #define _CTAMDPIXELTYPE_H
 
+#include <stdlib.h>
+
 namespace CTAConfig {
 	
 	class CTAMDPixelType {
 
 	private:
-		short nSamples;
+		int16_t pixTypeID;
+		int16_t nSamples;
 		float sampleTimeSlice;
-		short Ngains;
+		int16_t NGains;
 		float hiLoScale;
-		short hiLoThreshold;
+		int16_t hiLoThreshold;
 		float hiLoOffset;
 
+
 	public:
-		short getNSamples();
+		
+		CTAMDPixelType(int16_t pixTypeID, int16_t nSamples, float sampleTimeSlice, int16_t NGains, float hiLoScale, int16_t hiLoThreshold,float hiLoOffset);
+		
+		int16_t getPixelTypeID();
+		
+		int16_t getNSamples();
 
 		float getSampleTimeSlice();
 
-		short getNgains();
+		int16_t getNGains();
 
 		float getHiLoScale();
 
-		short getHiLoThreshold();
+		int16_t getHiLoThreshold();
 
 		float getHiLoOffset();
 	};
