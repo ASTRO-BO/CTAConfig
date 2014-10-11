@@ -1,37 +1,38 @@
-#ifndef _CTAMDMirrorType_H
-#define _CTAMDMirrorType_H
+#ifndef _CTAMDMIRRORTYPE_H
+#define _CTAMDMIRRORTYPE_H
 
-/**
- * Telescope Mirror Tyoe
- */
-class CTAMDMirrorType {
-
-private:
+namespace CTAConfig {
 	/**
-	 * FITS::FL
+	 * Telescope Mirror Tyoe
 	 */
-	float FocalLength;
-	/**
-	 * FITS::FOV
-	 */
-	float FOV;
-	/**
-	 * FITS::NMirrors
-	 */
-	int nMirrors;
-	/**
-	 * FITS::MirrorArea
-	 */
-	float MirrorArea;
+	class CTAMDMirrorType {
 
-public:
-	float getFocalLength();
+	private:
+		/**
+		 * FITS::FL
+		 */
+		float FocalLength;
+		/**
+		 * FITS::FOV
+		 */
+		float FOV;
+		/**
+		 * FITS::NMirrors
+		 */
+		int nMirrors;
+		/**
+		 * FITS::MirrorArea
+		 */
+		float MirrorArea;
 
-	float getFOV();
+	public:
+		float getFocalLength();
 
-	int getNMirrors();
+		float getFOV();
 
-	float getMirrorArea();
-};
+		int getNMirrors();
 
+		float getMirrorArea();
+	};
+}
 #endif

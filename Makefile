@@ -27,7 +27,7 @@ SYSTEM= $(shell gcc -dumpmachine)
 #ice, ctarta, mpi, cfitsio
 LINKERENV=  cfitsio
 EXE_NAME1 =
-LIB_NAME = libCTARTA
+LIB_NAME = libCTAconfig
 VER_FILE_NAME = version.h
 #the name of the directory where the conf file are copied (into $(datadir))
 CONF_DEST_DIR = idb
@@ -74,7 +74,7 @@ endif
 CC = gcc
 
 #Set INCPATH to add the inclusion paths
-INCPATH = -I $(INCLUDE_DIR) 
+INCPATH = -I $(INCLUDE_DIR) -I $(CTARTA)/include -L$(CTARTA)/lib
 LIBS = -lstdc++
 #Insert the optional parameter to the compiler. The CFLAGS could be changed externally by the user
 CFLAGS   = -g

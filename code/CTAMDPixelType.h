@@ -1,28 +1,31 @@
-#ifndef _CTAMDPixelType_H
-#define _CTAMDPixelType_H
+#ifndef _CTAMDPIXELTYPE_H
+#define _CTAMDPIXELTYPE_H
 
-class CTAMDPixelType {
+namespace CTAConfig {
+	
+	class CTAMDPixelType {
 
-private:
-	short nSamples;
-	float sampleTimeSlice;
-	short Ngains;
-	float hiLoScale;
-	short hiLoThreshold;
-	float hiLoOffset;
+	private:
+		short nSamples;
+		float sampleTimeSlice;
+		short Ngains;
+		float hiLoScale;
+		short hiLoThreshold;
+		float hiLoOffset;
 
-public:
-	short getNSamples();
+	public:
+		short getNSamples();
 
-	float getSampleTimeSlice();
+		float getSampleTimeSlice();
 
-	short getNgains();
+		short getNgains();
 
-	float getHiLoScale();
+		float getHiLoScale();
 
-	short getHiLoThreshold();
+		short getHiLoThreshold();
 
-	float getHiLoOffset();
-};
+		float getHiLoOffset();
+	};
 
+}
 #endif

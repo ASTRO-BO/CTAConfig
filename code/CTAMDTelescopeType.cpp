@@ -1,17 +1,17 @@
 #include "CTAMDTelescopeType.h"
 
-long CTAMDTelescopeType::getTelescopeTypeID() {
+long CTAConfig::CTAMDTelescopeType::getTelescopeTypeID() {
 	return ID;
 }
 
-CTAMDCameraType* CTAMDTelescopeType::getCameraType() {
+CTAConfig::CTAMDCameraType* CTAConfig::CTAMDTelescopeType::getCameraType() {
 	return this->cameraType;
 }
 
-CTAMDMirrorType* CTAMDTelescopeType::getMirrorType() {
+CTAConfig::CTAMDMirrorType* CTAConfig::CTAMDTelescopeType::getMirrorType() {
 	return this->mirrorType;
 }
 
-string CTAMDTelescopeType::getName() {
+string CTAConfig::CTAMDTelescopeType::getName() {
 	return this->name;
 }

@@ -23,6 +23,9 @@
 		DD783AEC19E87A3A0033ACA2 /* CTAMDTelescopeType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTAMDTelescopeType.cpp; sourceTree = "<group>"; };
 		DD783AED19E87A3A0033ACA2 /* CTAMDTelescopeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAMDTelescopeType.h; sourceTree = "<group>"; };
 		DD783AEE19E87B5D0033ACA2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		DD783AF019E8EEF80033ACA2 /* ConfigLoadMCFITS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigLoadMCFITS.cpp; sourceTree = "<group>"; };
+		DD783AF119E8EEF80033ACA2 /* ConfigLoadMCFITS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigLoadMCFITS.h; sourceTree = "<group>"; };
+		DD783AF219E8F1E60033ACA2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -37,6 +40,9 @@
 		DD783ADC19E830BC0033ACA2 /* code */ = {
 			isa = PBXGroup;
 			children = (
+				DD783AF219E8F1E60033ACA2 /* main.cpp */,
+				DD783AF019E8EEF80033ACA2 /* ConfigLoadMCFITS.cpp */,
+				DD783AF119E8EEF80033ACA2 /* ConfigLoadMCFITS.h */,
 				DD783AEC19E87A3A0033ACA2 /* CTAMDTelescopeType.cpp */,
 				DD783AED19E87A3A0033ACA2 /* CTAMDTelescopeType.h */,
 				DD783ADD19E830BC0033ACA2 /* CTAMDArray.cpp */,

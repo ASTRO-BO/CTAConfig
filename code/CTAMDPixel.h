@@ -1,27 +1,30 @@
-#ifndef _CTAMDPixel_H
-#define _CTAMDPixel_H
+#ifndef _CTAMDPIXEL_H
+#define _CTAMDPIXEL_H
 
 #include "CTAMDCoordinate.h"
 #include "CTAMDPixelType.h"
 
-class CTAMDPixel {
+namespace CTAConfig {
+	
+	class CTAMDPixel {
 
-private:
-	short ID;
-	CTAMDCoordinate* tubeMM;
-	CTAMDCoordinate* tubeDeg;
-	short tubeOFF;
-	CTAMDPixelType* pixelType;
+	private:
+		short ID;
+		CTAMDCoordinate* tubeMM;
+		CTAMDCoordinate* tubeDeg;
+		short tubeOFF;
+		CTAMDPixelType* pixelType;
 
-public:
-	short getID();
+	public:
+		short getID();
 
-	CTAMDCoordinate* getTubeMM();
+		CTAMDCoordinate* getTubeMM();
 
-	CTAMDCoordinate* getTubeDeg();
+		CTAMDCoordinate* getTubeDeg();
 
-	short getTubeOFF();
+		short getTubeOFF();
 
-	CTAMDPixelType* getPixelType();
-};
+		CTAMDPixelType* getPixelType();
+	};
+}
 #endif

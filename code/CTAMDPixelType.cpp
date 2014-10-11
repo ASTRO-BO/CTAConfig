@@ -1,25 +1,25 @@
 #include "CTAMDPixelType.h"
 
-short CTAMDPixelType::getNSamples() {
+short CTAConfig::CTAMDPixelType::getNSamples() {
 	return this->nSamples;
 }
 
-float CTAMDPixelType::getSampleTimeSlice() {
+float CTAConfig::CTAMDPixelType::getSampleTimeSlice() {
 	return this->sampleTimeSlice;
 }
 
-short CTAMDPixelType::getNgains() {
+short CTAConfig::CTAMDPixelType::getNgains() {
 	return Ngains;
 }
 
-float CTAMDPixelType::getHiLoScale() {
+float CTAConfig::CTAMDPixelType::getHiLoScale() {
 	return this->hiLoScale;
 }
 
-short CTAMDPixelType::getHiLoThreshold() {
+short CTAConfig::CTAMDPixelType::getHiLoThreshold() {
 	return this->hiLoThreshold;
 }
 
-float CTAMDPixelType::getHiLoOffset() {
+float CTAConfig::CTAMDPixelType::getHiLoOffset() {
 	return this->hiLoOffset;
 }

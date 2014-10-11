@@ -1,5 +1,5 @@
-#ifndef _CTAMDTelescopeType_H
-#define _CTAMDTelescopeType_H
+#ifndef _CTAMDTELESCOPETYPE_H
+#define _CTAMDTELESCOPETYPE_H
 
 #include <string>
 #include <vector>
@@ -10,25 +10,29 @@ using namespace std;
 /**
  * The telescope type
  */
-class CTAMDTelescopeType {
 
-private:
-	/**
-	 * FITS::TelType
-	 */
-	long ID;
-	string name;
-	CTAMDCameraType* cameraType;
-	CTAMDMirrorType* mirrorType;
+namespace CTAConfig {
 
-public:
-	long getTelescopeTypeID();
+	class CTAMDTelescopeType {
 
-	CTAMDCameraType* getCameraType();
+	private:
+		/**
+		 * FITS::TelType
+		 */
+		long ID;
+		string name;
+		CTAMDCameraType* cameraType;
+		CTAMDMirrorType* mirrorType;
 
-	CTAMDMirrorType* getMirrorType();
+	public:
+		long getTelescopeTypeID();
 
-	string getName();
-};
+		CTAMDCameraType* getCameraType();
 
+		CTAMDMirrorType* getMirrorType();
+
+		string getName();
+	};
+
+}
 #endif

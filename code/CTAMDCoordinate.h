@@ -1,12 +1,15 @@
-#ifndef _CTAMDCoordinate_H
-#define _CTAMDCoordinate_H
+#ifndef _CTAMDCOORDINATE_H
+#define _CTAMDCOORDINATE_H
 
-class CTAMDCoordinate {
+namespace CTAConfig {
+	
+	class CTAMDCoordinate {
 
-public:
-	float x;
-	float y;
-	float z;
-};
+	public:
+		float x;
+		float y;
+		float z;
+	};
 
+}
 #endif

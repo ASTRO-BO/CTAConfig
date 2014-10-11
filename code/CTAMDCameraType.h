@@ -1,34 +1,35 @@
-#ifndef _CTAMDCameraType_H
-#define _CTAMDCameraType_H
+#ifndef _CTAMDCAMERATYPE_H
+#define _CTAMDCAMERATYPE_H
 
 #include <vector>
 #include "CTAMDPixel.h"
 
 using namespace std;
 
-class CTAMDCameraType {
+namespace CTAConfig {
+	class CTAMDCameraType {
 
-private:
-	float cameraScaleFactor;
-	float cameraCentreOffset;
-	float cameraRotation;
-	int NTubesOff;
-	short npixels;
-	short npixels_active;
-	vector<CTAMDPixel> pixels;
+	private:
+		float cameraScaleFactor;
+		float cameraCentreOffset;
+		float cameraRotation;
+		int NTubesOff;
+		short npixels;
+		short npixels_active;
+		vector<CTAMDPixel> pixels;
 
-public:
-	float getCameraScaleFactor();
+	public:
+		float getCameraScaleFactor();
 
-	float getCameraCentreOffset();
+		float getCameraCentreOffset();
 
-	float getCameraRotation();
+		float getCameraRotation();
 
-	int getNTubesOff();
+		int getNTubesOff();
 
-	short getNpixels();
+		short getNpixels();
 
-	short getNpixels_active();
-};
-
+		short getNpixels_active();
+	};
+}
 #endif

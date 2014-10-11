@@ -1,29 +1,31 @@
-#ifndef _CTAMDTelescope_H
-#define _CTAMDTelescope_H
+#ifndef _CTAMDTELESCOPE_H
+#define _CTAMDTELESCOPE_H
 #include "CTAMDCoordinate.h"
 #include "CTAMDTelescopeType.h"
 
-/**
- * A telescope of the CTA Array
- */
-class CTAMDTelescope {
-
-private:
+namespace CTAConfig {
 	/**
-	 * FITS::TelID
+	 * A telescope of the CTA Array
 	 */
-	int ID;
-	/**
-	 * FITS::TelX, FITS::TelY, FITS::TelZ
-	 */
-	CTAMDCoordinate* coordinate;
-	CTAMDTelescopeType* telescopeType;
+	class CTAMDTelescope {
 
-public:
-	int getTelescopeID();
+	private:
+		/**
+		 * FITS::TelID
+		 */
+		int ID;
+		/**
+		 * FITS::TelX, FITS::TelY, FITS::TelZ
+		 */
+		CTAMDCoordinate* coordinate;
+		CTAMDTelescopeType* telescopeType;
 
-	CTAMDTelescopeType* getTelescopeType();
+	public:
+		int getTelescopeID();
 
-	CTAMDCoordinate* getCoordinate();
-};
+		CTAMDTelescopeType* getTelescopeType();
+
+		CTAMDCoordinate* getCoordinate();
+	};
+}
 #endif

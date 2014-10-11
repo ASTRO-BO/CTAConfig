@@ -1,13 +1,13 @@
 #include "CTAMDTelescope.h"
 
-int CTAMDTelescope::getTelescopeID() {
+int CTAConfig::CTAMDTelescope::getTelescopeID() {
 	return ID;
 }
 
-CTAMDTelescopeType* CTAMDTelescope::getTelescopeType() {
+CTAConfig::CTAMDTelescopeType* CTAConfig::CTAMDTelescope::getTelescopeType() {
 	return telescopeType;
 }
 
-CTAMDCoordinate* CTAMDTelescope::getCoordinate() {
+CTAConfig::CTAMDCoordinate* CTAConfig::CTAMDTelescope::getCoordinate() {
 	return this->coordinate;
 }

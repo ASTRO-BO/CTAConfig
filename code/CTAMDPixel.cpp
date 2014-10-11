@@ -1,21 +1,21 @@
 #include "CTAMDPixel.h"
 
-short CTAMDPixel::getID() {
+short CTAConfig::CTAMDPixel::getID() {
 	return ID;
 }
 
-CTAMDCoordinate* CTAMDPixel::getTubeMM() {
+CTAConfig::CTAMDCoordinate* CTAConfig::CTAMDPixel::getTubeMM() {
 	return this->tubeMM;
 }
 
-CTAMDCoordinate* CTAMDPixel::getTubeDeg() {
+CTAConfig::CTAMDCoordinate* CTAConfig::CTAMDPixel::getTubeDeg() {
 	return this->tubeDeg;
 }
 
-short CTAMDPixel::getTubeOFF() {
+short CTAConfig::CTAMDPixel::getTubeOFF() {
 	return this->tubeOFF;
 }
 
-CTAMDPixelType* CTAMDPixel::getPixelType() {
+CTAConfig::CTAMDPixelType* CTAConfig::CTAMDPixel::getPixelType() {
 	return this->pixelType;
 }

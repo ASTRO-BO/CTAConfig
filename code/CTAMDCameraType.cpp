@@ -1,25 +1,25 @@
 #include "CTAMDCameraType.h"
 
-float CTAMDCameraType::getCameraScaleFactor() {
+float CTAConfig::CTAMDCameraType::getCameraScaleFactor() {
 	return this->cameraScaleFactor;
 }
 
-float CTAMDCameraType::getCameraCentreOffset() {
+float CTAConfig::CTAMDCameraType::getCameraCentreOffset() {
 	return this->cameraCentreOffset;
 }
 
-float CTAMDCameraType::getCameraRotation() {
+float CTAConfig::CTAMDCameraType::getCameraRotation() {
 	return this->cameraRotation;
 }
 
-int CTAMDCameraType::getNTubesOff() {
+int CTAConfig::CTAMDCameraType::getNTubesOff() {
 	return this->NTubesOff;
 }
 
-short CTAMDCameraType::getNpixels() {
+short CTAConfig::CTAMDCameraType::getNpixels() {
 	return this->npixels;
 }
 
-short CTAMDCameraType::getNpixels_active() {
+short CTAConfig::CTAMDCameraType::getNpixels_active() {
 	return this->npixels_active;
 }

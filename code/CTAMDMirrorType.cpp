@@ -1,17 +1,17 @@
 #include "CTAMDMirrorType.h"
 
-float CTAMDMirrorType::getFocalLength() {
+float CTAConfig::CTAMDMirrorType::getFocalLength() {
 	return FocalLength;
 }
 
-float CTAMDMirrorType::getFOV() {
+float CTAConfig::CTAMDMirrorType::getFOV() {
 	return FOV;
 }
 
-int CTAMDMirrorType::getNMirrors() {
+int CTAConfig::CTAMDMirrorType::getNMirrors() {
 	return this->nMirrors;
 }
 
-float CTAMDMirrorType::getMirrorArea() {
+float CTAConfig::CTAMDMirrorType::getMirrorArea() {
 	return MirrorArea;
 }

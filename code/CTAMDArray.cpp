@@ -1,21 +1,29 @@
 #include "CTAMDArray.h"
+#include "ConfigLoadMCFITS.h"
 
-string CTAMDArray::getArrayConfigName() {
+#define CONF_L0HEADER 1
+#define CONF_L1HEADER 2
+
+string CTAConfig::CTAMDArray::getArrayConfigName() {
 	return this->arrayConfigName;
 }
 
-void CTAMDArray::setArrayConfigName(string arrayConfigName) {
+void CTAConfig::CTAMDArray::setArrayConfigName(string arrayConfigName) {
 	this->arrayConfigName = arrayConfigName;
 }
 
-CTAMDTelescope* CTAMDArray::getTelescope(int telID) {
-	throw "Not yet implemented";
+CTAConfig::CTAMDTelescope* CTAConfig::CTAMDArray::getTelescope(int telID) {
+	for(int i=0; i<telescopes.size(); i++) {
+		if(telescopes[i]->getTelescopeID() == telID)
+			return telescopes[i];
+	}
+	return 0;
 }
 
-void CTAMDArray::loadConfig(string filename, string arrayName) {
-	throw "Not yet implemented";
+void CTAConfig::CTAMDArray::loadConfig(string filename, string arrayName) {
+	ConfigLoadMCFITS config(filename);
 }
 
-string CTAMDArray::getName() {
+string CTAConfig::CTAMDArray::getName() {
 	return this->name;
 }
