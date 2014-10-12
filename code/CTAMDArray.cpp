@@ -29,7 +29,7 @@ CTAConfig::CTAMDTelescopeType* CTAConfig::CTAMDArray::getTelescopeType(int64_t t
 
 void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos) {
 	cout << "Load config" <<endl;
-	ConfigLoadMCFITS config(arrayFilename);
+	ConfigLoadMCFITS config(filenameArray);
 	this->arrayConfigName = arrayName;
 	
 	
@@ -80,6 +80,10 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		CTAMDTelescopeType* telescopeType = new CTAMDTelescopeType(config.telescopeTypes[i].TelType, "NONAME", cameraType, mirrorType, i);
 		
 		telescopeTypes.push_back(telescopeType);
+	}
+	
+	for(int i=0; i<config.telescopes.size(); i++) {
+		cout << config.telescopes[i].TelID << endl;
 	}
 	
 	cout << "End load config" <<endl;
