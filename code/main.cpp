@@ -64,4 +64,11 @@ int main(int argc, char *argv[])
 		cout << array.telescopeTypes[i]->getMirrorType()->getMirrorArea() << endl;
 		cout << array.telescopeTypes[i]->getCameraType()->pixels[0]->getPixelType()->getNSamples() << endl;
 	}
+	cout << "TELESCOPES" << endl;
+	for(int i=0; i<array.telescopes.size(); i++) {
+		cout << array.telescopes[i]->getTelescopeID() << " ";
+		cout << array.telescopes[i]->getTelescopeType()->getCameraType()->getNpixels() << " ";
+		cout << array.telescopes[i]->getCamera()->getNPixelsActive() << " ";
+		cout << array.telescopes[i]->getTelescopeType()->getCameraType()->pixels[0]->getPixelType()->getNSamples() << endl;
+	}
 }

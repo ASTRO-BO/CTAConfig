@@ -26,7 +26,7 @@ namespace CTAConfig {
 
 	public:
 		
-		CTAMDTelescope(CTAMDCoordinate3D* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera);
+		CTAMDTelescope(int ID, CTAMDCoordinate3D* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera);
 		
 		int getTelescopeID();
 

@@ -1,7 +1,8 @@
 #include "CTAMDTelescope.h"
 
 
-CTAConfig::CTAMDTelescope::CTAMDTelescope(CTAMDCoordinate3D* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera) {
+CTAConfig::CTAMDTelescope::CTAMDTelescope(int ID, CTAMDCoordinate3D* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera) {
+	this->ID = ID;
 	this->position = position;
 	this->telescopeType = telescopeType;
 	this->camera = camera;

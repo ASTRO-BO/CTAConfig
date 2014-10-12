@@ -62,15 +62,14 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		
 		
 		//build the list of pixels of the camera type
+		cout << "pixelssssss" << endl;
 		for(int pi=0; pi<cam->NPixel; pi++) {
 		
 			struct CTAConfig::ConfigLoadMCFITS::Pixel* pix =  config.getPixel(cam->camType, pi);
-			//cout << pix->PixelID << " ";
 			if(pix != 0) {
 				CTAMDCoordinate2D* pos = new CTAMDCoordinate2D(pix->XTubeMM, pix->YTubeMM);
 				CTAMDCoordinate2D* rot = new CTAMDCoordinate2D(pix->XTubeDeg, pix->YTubeDeg);
 				CTAMDPixel * pixel = new CTAMDPixel(pix->PixelID, pos, pix->RTubeMM, rot, pix->RTubeDeg, pixelType);
-			
 				cameraType->addPixel(pixel);
 			}
 			//cout << endl;
@@ -83,8 +82,31 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 	}
 	
 	for(int i=0; i<config.telescopes.size(); i++) {
-		cout << config.telescopes[i].TelID << endl;
+		cout << config.telescopes[i].TelID << " " << config.telescopes[i].telescopeType.TelType << endl;
+		//TODO leggere i dati dei telescopi
+		CTAMDTelescopeType* telescopeType = getTelescopeType(config.telescopes[i].telescopeType.TelType);
+		CTAMDCoordinate3D* pos = new CTAMDCoordinate3D(config.telescopes[i].TelX, config.telescopes[i].TelY, config.telescopes[i].TelZ);
+		CTAMDCamera* camera = new CTAMDCamera("NONAME", telescopeType);
+		//pixel status
+		struct CTAConfig::ConfigLoadMCFITS::CameraType* cam = config.getCameraType(telescopeType->getCameraType()->getCamTypeID());
+		for(int pi=0; pi<cam->NPixel; pi++) {
+			
+			struct CTAConfig::ConfigLoadMCFITS::Pixel* pix =  config.getPixel(cam->camType, pi);
+			//cout << pix->PixelID << " ";
+			if(pix != 0) {
+				
+				camera->addPixelStatus(pix->PixelID, pix->TubeOFF);
+			}
+			//cout << endl;
+		}
+		
+		CTAMDTelescope* telescope = new CTAMDTelescope(config.telescopes[i].TelID, pos, telescopeType, camera);
+		telescopes.push_back(telescope);
+		
 	}
+	
+	//TODO2 fare il file con le info addizionali
+	//TODO3 leggere le LUT
 	
 	cout << "End load config" <<endl;
 }
