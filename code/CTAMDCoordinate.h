@@ -8,7 +8,12 @@ namespace CTAConfig {
 	public:
 		float x;
 		float y;
-		float z;
+		
+		CTAMDCoordinate(float x, float y) {
+			this->x = x;
+			this->y = y;
+		}
+		
 	};
 
 }

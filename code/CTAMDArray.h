@@ -16,7 +16,7 @@ namespace CTAConfig {
 	private:
 		string arrayConfigName;
 		string name;
-		vector<CTAMDTelescope*> telescopes;
+		
 		qlbase::InputFileFITS conf_file;
 
 	public:
@@ -25,13 +25,22 @@ namespace CTAConfig {
 		void setArrayConfigName(string arrayConfigName);
 
 		CTAMDTelescope* getTelescope(int telID);
+		
+		CTAMDTelescopeType* getTelescopeType(int64_t telTypeID);
 
-		/**
-		 * Load Monte Carlo CTA Array Configuration
-		 */
-		void loadConfig(string filename, string arrayName);
+		
+		/// Load Monte Carlo CTA Array Configuration
+		/// \param name the name of the array
+		/// \filenameArray the name of the .fits file that contains the configuration of the array
+		/// \filenameAdditionalInfos the name of the file that contains the following info: TELTYPEID TELTYPENAME CAMERATYPENAME MIRRORTYPENAME LOOKUP-TABLE-CONFIG-FILE
+		void loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos);
 
 		string getName();
+		
+	public:
+		
+		vector<CTAMDTelescope*> telescopes;
+		vector<CTAMDTelescopeType*> telescopeTypes;
 	};
 }
 #endif

@@ -20,16 +20,19 @@ namespace CTAConfig {
 		/**
 		 * FITS::TelX, FITS::TelY, FITS::TelZ
 		 */
-		CTAMDCoordinate* coordinate;
+		CTAMDCoordinate* position;
 		CTAMDTelescopeType* telescopeType;
 		CTAMDCamera* camera;
 
 	public:
+		
+		CTAMDTelescope(CTAMDCoordinate* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera);
+		
 		int getTelescopeID();
 
 		CTAMDTelescopeType* getTelescopeType();
 
-		CTAMDCoordinate* getCoordinate();
+		CTAMDCoordinate* getPosition();
 		
 		CTAMDCamera* getCamera();
 	};

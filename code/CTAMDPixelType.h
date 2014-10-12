@@ -21,7 +21,7 @@ namespace CTAConfig {
 		
 		CTAMDPixelType(int16_t pixTypeID, int16_t nSamples, float sampleTimeSlice, int16_t NGains, float hiLoScale, int16_t hiLoThreshold,float hiLoOffset);
 		
-		int16_t getPixelTypeID();
+		int16_t getID();
 		
 		int16_t getNSamples();
 

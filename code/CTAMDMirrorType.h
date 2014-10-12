@@ -1,6 +1,11 @@
 #ifndef _CTAMDMIRRORTYPE_H
 #define _CTAMDMIRRORTYPE_H
 
+#include <stdlib.h>
+#include <string>
+
+using namespace std;
+
 namespace CTAConfig {
 	/**
 	 * Telescope Mirror Tyoe
@@ -8,6 +13,11 @@ namespace CTAConfig {
 	class CTAMDMirrorType {
 
 	private:
+		
+		int16_t ID;
+		
+		string name;
+		
 		/**
 		 * FITS::FL
 		 */
@@ -26,6 +36,9 @@ namespace CTAConfig {
 		float MirrorArea;
 
 	public:
+		
+		CTAMDMirrorType(int16_t ID, string name, float FocalLength, float FOV, int nMirrors, float MirrorArea);
+		
 		float getFocalLength();
 
 		float getFOV();
@@ -33,6 +46,8 @@ namespace CTAConfig {
 		int getNMirrors();
 
 		float getMirrorArea();
+		
+		string getName();
 	};
 }
 #endif

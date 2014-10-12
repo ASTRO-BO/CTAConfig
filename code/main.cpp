@@ -39,6 +39,7 @@
 #include <limits>
 
 #include "ConfigLoadMCFITS.h"
+#include "CTAMDArray.h"
 
 using namespace std;
 using namespace CTAConfig;
@@ -52,4 +53,15 @@ int main(int argc, char *argv[])
 	cout << config.cameraTypes.size() << endl;
 	cout << config.pixelTypes.size() << endl;
 	cout << config.pixels[0].size() << endl;
+	
+	CTAMDArray array;
+	
+	array.loadConfig("AARPROD2", "./conf/PROD2_telconfig.fits.gz", "");
+	
+	for(int i=0; i<array.telescopeTypes.size(); i++) {
+		cout << array.telescopeTypes[i]->getTelescopeTypeID() << endl;
+		cout << array.telescopeTypes[i]->getCameraType()->getNpixels() << endl;
+		cout << array.telescopeTypes[i]->getMirrorType()->getMirrorArea() << endl;
+		cout << array.telescopeTypes[i]->getCameraType()->pixels[0]->getPixelType()->getNSamples() << endl;
+	}
 }

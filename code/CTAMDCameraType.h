@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "CTAMDPixel.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -14,8 +15,6 @@ namespace CTAConfig {
 		float cameraScaleFactor;
 		float cameraCentreOffset;
 		float cameraRotation;
-		
-		vector<CTAMDPixel*> pixels;
 		int camTypeID;
 		string camTypeName;
 		
@@ -37,6 +36,13 @@ namespace CTAConfig {
 		float getCameraRotation();
 
 		int16_t getNpixels();
+		
+		CTAMDPixel* getPixel(int16_t pixelID);
+		
+		
+	public:
+		
+		vector<CTAMDPixel*> pixels;
 
 	};
 }

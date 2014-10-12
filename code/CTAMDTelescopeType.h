@@ -19,13 +19,17 @@ namespace CTAConfig {
 		/**
 		 * FITS::TelType
 		 */
-		long ID;
+		int64_t ID;
+		int16_t internaleCounter;
 		string name;
 		CTAMDCameraType* cameraType;
 		CTAMDMirrorType* mirrorType;
 
 	public:
-		long getTelescopeTypeID();
+		
+		CTAMDTelescopeType(int64_t ID, string name, CTAMDCameraType* cameraType, CTAMDMirrorType* mirrorType, uint16_t internaleCounter);
+		
+		int64_t getTelescopeTypeID();
 
 		CTAMDCameraType* getCameraType();
 

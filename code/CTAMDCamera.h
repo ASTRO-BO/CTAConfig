@@ -3,6 +3,9 @@
 
 #include "CTAMDTelescopeType.h"
 #include <stdlib.h>
+#include <string>
+
+using namespace std;
 
 namespace CTAConfig {
 	
@@ -15,7 +18,7 @@ namespace CTAConfig {
 
 	public:
 		
-		CTAMDCamera(CTAMDTelescopeType* telescopeType);
+		CTAMDCamera(string name, CTAMDTelescopeType* telescopeType);
 		
 		string getName();
 		

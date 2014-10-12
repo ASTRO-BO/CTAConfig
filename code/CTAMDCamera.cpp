@@ -12,7 +12,8 @@ void CTAConfig::CTAMDCamera::addPixelStatus(int16_t status) {
 	pixelStatus.push_back(status);
 }
 
-CTAConfig::CTAMDCamera::CTAMDCamera(CTAMDTelescopeType* telescopeType) {
+CTAConfig::CTAMDCamera::CTAMDCamera(string name, CTAMDTelescopeType* telescopeType) {
+	this->name = name;
 	this->telescopeType = telescopeType;
 }
 

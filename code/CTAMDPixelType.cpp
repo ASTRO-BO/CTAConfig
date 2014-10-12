@@ -10,7 +10,7 @@ CTAConfig::CTAMDPixelType::CTAMDPixelType(int16_t pixTypeID, int16_t nSamples, f
 	this->hiLoOffset = hiLoOffset;
 }
 
-int16_t CTAConfig::CTAMDPixelType::getPixelTypeID() {
+int16_t CTAConfig::CTAMDPixelType::getID() {
 	return this->pixTypeID;
 }
 

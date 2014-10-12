@@ -38,3 +38,11 @@ short CTAConfig::CTAMDCameraType::getNpixels() {
 	return this->pixels.size();
 }
 
+
+CTAConfig::CTAMDPixel* CTAConfig::CTAMDCameraType::getPixel(int16_t pixelID) {
+	for(int i=0; i<pixels.size(); i++) {
+		if(pixels[i]->getID() == pixelID)
+			return pixels[i];
+	}
+	return 0;
+}
