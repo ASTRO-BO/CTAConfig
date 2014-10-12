@@ -11,21 +11,21 @@ namespace CTAConfig {
 
 	private:
 		int16_t ID;
-		CTAMDCoordinate* tubeMM;
+		CTAMDCoordinate2D* tubeMM;
 		float RTubeMM;
-		CTAMDCoordinate* tubeDeg;
+		CTAMDCoordinate2D* tubeDeg;
 		float RTubeDeg;
 		CTAMDPixelType* pixelType;
 
 	public:
 		
-		CTAMDPixel(int16_t pixelID, CTAMDCoordinate* tubeMM, float RTubeMM, CTAMDCoordinate* tubeDeg, float RTubeDeg, CTAMDPixelType* pixelType);
+		CTAMDPixel(int16_t pixelID, CTAMDCoordinate2D* tubeMM, float RTubeMM, CTAMDCoordinate2D* tubeDeg, float RTubeDeg, CTAMDPixelType* pixelType);
 		
 		int16_t getID();
 
-		CTAMDCoordinate* getTubeMM();
+		CTAMDCoordinate2D* getTubeMM();
 
-		CTAMDCoordinate* getTubeDeg();
+		CTAMDCoordinate2D* getTubeDeg();
 
 		CTAMDPixelType* getPixelType();
 	};

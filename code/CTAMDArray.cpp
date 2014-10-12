@@ -67,8 +67,8 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 			struct CTAConfig::ConfigLoadMCFITS::Pixel* pix =  config.getPixel(cam->camType, pi);
 			//cout << pix->PixelID << " ";
 			if(pix != 0) {
-				CTAMDCoordinate* pos = new CTAMDCoordinate(pix->XTubeMM, pix->YTubeMM);
-				CTAMDCoordinate* rot = new CTAMDCoordinate(pix->XTubeDeg, pix->YTubeDeg);
+				CTAMDCoordinate2D* pos = new CTAMDCoordinate2D(pix->XTubeMM, pix->YTubeMM);
+				CTAMDCoordinate2D* rot = new CTAMDCoordinate2D(pix->XTubeDeg, pix->YTubeDeg);
 				CTAMDPixel * pixel = new CTAMDPixel(pix->PixelID, pos, pix->RTubeMM, rot, pix->RTubeDeg, pixelType);
 			
 				cameraType->addPixel(pixel);
