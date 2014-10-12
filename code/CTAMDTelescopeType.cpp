@@ -9,7 +9,7 @@ CTAConfig::CTAMDTelescopeType::CTAMDTelescopeType(int64_t ID, string name, CTACo
 	this->internaleCounter = internaleCounter;
 }
 
-int64_t CTAConfig::CTAMDTelescopeType::getTelescopeTypeID() {
+int64_t CTAConfig::CTAMDTelescopeType::getID() {
 	return ID;
 }
 

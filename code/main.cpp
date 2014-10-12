@@ -56,19 +56,19 @@ int main(int argc, char *argv[])
 	
 	CTAMDArray array;
 	
-	array.loadConfig("AARPROD2", "./conf/PROD2_telconfig.fits.gz", "");
+	array.loadConfig("AARPROD2", "./conf/PROD2_telconfig.fits.gz", "./conf/Aar.conf");
 	
 	for(int i=0; i<array.telescopeTypes.size(); i++) {
-		cout << array.telescopeTypes[i]->getTelescopeTypeID() << endl;
+		cout << array.telescopeTypes[i]->getID() << endl;
 		cout << array.telescopeTypes[i]->getCameraType()->getNpixels() << endl;
 		cout << array.telescopeTypes[i]->getMirrorType()->getMirrorArea() << endl;
 		cout << array.telescopeTypes[i]->getCameraType()->pixels[0]->getPixelType()->getNSamples() << endl;
 	}
 	cout << "TELESCOPES" << endl;
 	for(int i=0; i<array.telescopes.size(); i++) {
-		cout << array.telescopes[i]->getTelescopeID() << " ";
+		cout << array.telescopes[i]->getID() << " " << array.telescopes[i]->getTelescopeType()->getName() << " ";
 		cout << array.telescopes[i]->getTelescopeType()->getCameraType()->getNpixels() << " ";
-		cout << array.telescopes[i]->getCamera()->getNPixelsActive() << " ";
+		cout << array.telescopes[i]->getCamera()->getNPixelsActive() << " " << array.telescopes[i]->getCamera()->getName() << " ";
 		cout << array.telescopes[i]->getTelescopeType()->getCameraType()->pixels[0]->getPixelType()->getNSamples() << endl;
 	}
 }

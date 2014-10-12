@@ -18,6 +18,13 @@ namespace CTAConfig {
 		string name;
 		
 		qlbase::InputFileFITS conf_file;
+		
+		///Array of strings that contain the following info: TELTYPEID TELTYPENAME CAMERATYPENAME MIRRORTYPENAME LOOKUP-TABLE-CONFIG-FILE
+		std::vector < std::vector<std::string> > configArray;
+		
+	protected:
+		
+		void loadAdds(string filename);
 
 	public:
 		string getArrayConfigName();

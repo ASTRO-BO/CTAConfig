@@ -17,7 +17,7 @@ int16_t CTAConfig::CTAMDCamera::getPixelStatus(uint16_t pixelID) {
 }
 
 void CTAConfig::CTAMDCamera::addPixelStatus(uint16_t ID, int16_t status) {
-	cout << ID << " " << status << endl;
+	//cout << ID << " " << status << endl;
 	this->pixelStatus.push_back(status);
 	this->pixelID.push_back(ID);
 	if(linear && this->pixelID.size() != ID + 1)

@@ -48,6 +48,8 @@ namespace CTAConfig {
 		float getMirrorArea();
 		
 		string getName();
+		
+		int16_t getID();
 	};
 }
 #endif

@@ -28,3 +28,7 @@ float CTAConfig::CTAMDMirrorType::getMirrorArea() {
 string CTAConfig::CTAMDMirrorType::getName() {
 	return this->name;
 }
+
+int16_t CTAConfig::CTAMDMirrorType::getID() {
+	return this->ID;
+}

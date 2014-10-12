@@ -29,7 +29,7 @@ namespace CTAConfig {
 		
 		CTAMDTelescopeType(int64_t ID, string name, CTAMDCameraType* cameraType, CTAMDMirrorType* mirrorType, uint16_t internaleCounter);
 		
-		int64_t getTelescopeTypeID();
+		int64_t getID();
 
 		CTAMDCameraType* getCameraType();
 

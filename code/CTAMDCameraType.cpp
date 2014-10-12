@@ -12,11 +12,11 @@ void CTAConfig::CTAMDCameraType::addPixel(CTAMDPixel* pixel) {
 	pixels.push_back(pixel);
 }
 
-int CTAConfig::CTAMDCameraType::getCamTypeID() {
+int CTAConfig::CTAMDCameraType::getID() {
 	return this->camTypeID;
 }
 
-string CTAConfig::CTAMDCameraType::getCamTypeName() {
+string CTAConfig::CTAMDCameraType::getName() {
 	return this->camTypeName;
 }
 

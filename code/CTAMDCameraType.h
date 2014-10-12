@@ -25,9 +25,9 @@ namespace CTAConfig {
 		
 		void addPixel(CTAMDPixel* pixel);
 		
-		int getCamTypeID();
+		int getID();
 		
-		string getCamTypeName();
+		string getName();
 		
 		float getCameraScaleFactor();
 
