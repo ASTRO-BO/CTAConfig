@@ -1,5 +1,5 @@
 /***************************************************************************
- CTAConfigLoad.h  -  description
+ ConfigLoadMCFITS.h  -  description
  -------------------
  copyright            : (C) 2014 Valentina Fioretti
  email                : fioretti@iasfbo.inaf.it
