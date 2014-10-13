@@ -55,10 +55,26 @@ namespace CTAConfig {
 		
 		CTAMDPixel* getPixel(int16_t pixelID);
 		
+		uint16_t loadGeometryLUT(string filename);
+		
+		/// -1 the pixel is not part of the geometry
+		/// -2 out of index
+		int16_t getGeometryLUTValue(int16_t row, int16_t col);
+		
+		int16_t getGeometryLUT_Nrows();
+		
+		int16_t getGeometryLUT_Ncols();
+		
 		
 	public:
 		
 		vector<CTAMDPixel*> pixels;
+		
+		int16_t* lut;
+		
+		int16_t lut_row;
+		
+		int16_t lut_col;
 
 	};
 }

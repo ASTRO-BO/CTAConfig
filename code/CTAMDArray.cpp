@@ -144,7 +144,7 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		
 		//build the telescope type
 		CTAMDTelescopeType* telescopeType = new CTAMDTelescopeType(config.telescopeTypes[i].TelType, configArray[tt][1], cameraType, mirrorType, i);
-		
+		telescopeType->getCameraType()->loadGeometryLUT(configArray[tt][4]);
 		telescopeTypes.push_back(telescopeType);
 	}
 	
@@ -171,9 +171,6 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		}
 		
 		CTAMDTelescope* telescope = new CTAMDTelescope(config.telescopes[i].TelID, telName, pos, telescopeType, camera);
-		
-		//TODO3 leggere le LUT (per telescopeType o per telescope?)
-		
 		telescopes.push_back(telescope);
 		
 	}

@@ -14,6 +14,12 @@
  ***************************************************************************/
 
 #include "CTAMDCameraType.h"
+#include <qlbase/InputFileFITS.h>
+#include <iostream>
+
+using namespace std;
+
+#define L0HEADER 1
 
 CTAConfig::CTAMDCameraType::CTAMDCameraType(int camTypeID, string camTypeName, float cameraScaleFactor, float cameraCentreOffset, float cameraRotation) {
 	this->camTypeID = camTypeID;
@@ -60,4 +66,91 @@ CTAConfig::CTAMDPixel* CTAConfig::CTAMDCameraType::getPixel(int16_t pixelID) {
 			return pixels[i];
 	}
 	return 0;
+}
+
+uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
+	qlbase::InputFileFITS conf_file;
+	
+	string filename = "./conf/";
+	filename += fn;
+	
+	try {
+		vector<int16_t> row;
+		vector<int16_t> col;
+		vector<int16_t> pix;
+		
+		if (filename != "") {
+			/// open FITS file
+			conf_file.open(filename);
+			//conf_Nheader = conf_file.getHeadersNum();
+			//cout << "Number of headers: " << conf_Nheader << endl;
+			
+			/// Moving to the Telescope level Header L0
+			conf_file.moveToHeader(L0HEADER);
+			
+			/// Loading the number of rows
+			int conf_Nrows_L0 = conf_file.getNRows();
+			
+			/// Loading the data
+			int row_colnum = conf_file.getColNum("ROW");
+			int col_colnum = conf_file.getColNum("COLUMN");
+			int pix_colnum = conf_file.getColNum("PixelID");
+			
+			row = conf_file.read16i(row_colnum, 0, conf_Nrows_L0-1);
+			col = conf_file.read16i(col_colnum, 0, conf_Nrows_L0-1);
+			pix = conf_file.read16i(pix_colnum, 0, conf_Nrows_L0-1);
+			
+			conf_file.close();
+		}
+		//cout << row.size() << " " << col.size() << " " << pix.size() << endl;
+		
+		//build the lut
+		//get row max
+		int16_t maxrow=0;
+		for(int i=0; i<row.size(); i++) {
+			if(row[i] > maxrow)
+				maxrow = row[i];
+		}
+		//cout << maxrow << endl;
+		lut_row = maxrow + 1;
+		//get row max
+		int16_t maxcol=0;
+		for(int i=0; i<col.size(); i++) {
+			if(col[i] > maxcol)
+				maxcol = col[i];
+		}
+		//cout << maxcol << endl;
+		lut_col = maxcol + 1;
+		lut = (int16_t*) new int16_t[lut_row * lut_col];
+		for(int ir=0; ir < row.size(); ir++) {
+			int16_t rowindex = row[ir];
+			int16_t colindex = col[ir];
+			//cout << rowindex << " " << colindex << endl;
+			lut[rowindex * lut_col + colindex] = pix[ir];
+			//cout << rowindex << " " << colindex << " " << lut[rowindex * lut_col + colindex] << endl;
+		}
+		
+		
+	}
+	catch (qlbase::IOException& e) {
+		cout << "ERROR: File "<< filename <<" does not exist. Error code: " << e.getErrorCode() << endl;
+	}
+	
+	return 0;
+}
+
+int16_t CTAConfig::CTAMDCameraType::getGeometryLUTValue(int16_t row, int16_t col) {
+	if(row > lut_row)
+		return -2;
+	if(col > lut_col)
+		return -2;
+	return lut[row * lut_col + col];
+}
+
+int16_t CTAConfig::CTAMDCameraType::getGeometryLUT_Nrows() {
+	return lut_row;
+}
+
+int16_t CTAConfig::CTAMDCameraType::getGeometryLUT_Ncols() {
+	return lut_col;
 }
