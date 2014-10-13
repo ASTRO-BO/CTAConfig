@@ -59,11 +59,11 @@ namespace CTAConfig {
 		
 		/// -1 the pixel is not part of the geometry
 		/// -2 out of index
-		int16_t getGeometryLUTValue(int16_t row, int16_t col);
+		inline int16_t getGeometryLUTValue(int16_t row, int16_t col);
 		
-		int16_t getGeometryLUT_Nrows();
+		inline int16_t getGeometryLUT_Nrows();
 		
-		int16_t getGeometryLUT_Ncols();
+		inline int16_t getGeometryLUT_Ncols();
 		
 		
 	public:
