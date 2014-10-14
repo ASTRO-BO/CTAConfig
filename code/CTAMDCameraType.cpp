@@ -75,9 +75,6 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 	filename += fn;
 	
 	try {
-		vector<int16_t> row;
-		vector<int16_t> col;
-		vector<int16_t> pix;
 		
 		if (filename != "") {
 			/// open FITS file
