@@ -59,22 +59,23 @@ namespace CTAConfig {
 		
 		/// -1 the pixel is not part of the geometry
 		/// -2 out of index
-		inline int16_t getGeometryLUTValue(int16_t row, int16_t col);
+		inline int16_t getGeometryLUTOffsetValue(int16_t row, int16_t col);
 		
-		inline int16_t getGeometryLUT_Nrows();
+		inline uint16_t getGeometryLUTOffset_Nrows();
 		
-		inline int16_t getGeometryLUT_Ncols();
+		inline uint16_t getGeometryLUTOffset_Ncols();
 		
 		
 	public:
 		
 		vector<CTAMDPixel*> pixels;
 		
-		int16_t* lut;
+		///lut loaded from file that contains the index to the array of data
+		int16_t* lutOffset;
 		
-		int16_t lut_row;
+		uint16_t lutOffset_row;
 		
-		int16_t lut_col;
+		uint16_t lutOffset_col;
 
 	};
 }

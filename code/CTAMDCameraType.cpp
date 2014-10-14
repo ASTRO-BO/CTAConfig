@@ -112,7 +112,7 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 				maxrow = row[i];
 		}
 		//cout << maxrow << endl;
-		lut_row = maxrow + 1;
+		lutOffset_row = maxrow + 1;
 		//get row max
 		int16_t maxcol=0;
 		for(int i=0; i<col.size(); i++) {
@@ -120,13 +120,13 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 				maxcol = col[i];
 		}
 		//cout << maxcol << endl;
-		lut_col = maxcol + 1;
-		lut = (int16_t*) new int16_t[lut_row * lut_col];
+		lutOffset_col = maxcol + 1;
+		lutOffset = (int16_t*) new int16_t[lutOffset_row * lutOffset_col];
 		for(int ir=0; ir < row.size(); ir++) {
 			int16_t rowindex = row[ir];
 			int16_t colindex = col[ir];
 			//cout << rowindex << " " << colindex << endl;
-			lut[rowindex * lut_col + colindex] = pix[ir];
+			lutOffset[rowindex * lutOffset_col + colindex] = pix[ir];
 			//cout << rowindex << " " << colindex << " " << lut[rowindex * lut_col + colindex] << endl;
 		}
 		
@@ -139,18 +139,18 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 	return 0;
 }
 
-int16_t CTAConfig::CTAMDCameraType::getGeometryLUTValue(int16_t row, int16_t col) {
-	if(row > lut_row)
+int16_t CTAConfig::CTAMDCameraType::getGeometryLUTOffsetValue(int16_t row, int16_t col) {
+	if(row > lutOffset_row)
 		return -2;
-	if(col > lut_col)
+	if(col > lutOffset_col)
 		return -2;
-	return lut[row * lut_col + col];
+	return lutOffset[row * lutOffset_col + col];
 }
 
-int16_t CTAConfig::CTAMDCameraType::getGeometryLUT_Nrows() {
-	return lut_row;
+uint16_t CTAConfig::CTAMDCameraType::getGeometryLUTOffset_Nrows() {
+	return lutOffset_row;
 }
 
-int16_t CTAConfig::CTAMDCameraType::getGeometryLUT_Ncols() {
-	return lut_col;
+uint16_t CTAConfig::CTAMDCameraType::getGeometryLUTOffset_Ncols() {
+	return lutOffset_col;
 }
