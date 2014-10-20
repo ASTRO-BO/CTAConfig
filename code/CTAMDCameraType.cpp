@@ -68,15 +68,14 @@ CTAConfig::CTAMDPixel* CTAConfig::CTAMDCameraType::getPixel(int16_t pixelID) {
 	return 0;
 }
 
-CTAGridMap* CTAConfig::CTAMDCameraType::getMap() {
+CTAHexagonalPointyTopOddRowGridMap* CTAConfig::CTAMDCameraType::getMap() {
 	return map;
 }
 
 uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 	qlbase::InputFileFITS conf_file;
 	
-	string filename = "./conf/";
-	filename += fn;
+	string filename = fn;
 	
 	try {
 		
@@ -97,8 +96,8 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 			int col_colnum = conf_file.getColNum("COLUMN");
 			int pix_colnum = conf_file.getColNum("PixelID");
 			
-			row = conf_file.read16i(row_colnum, 0, conf_Nrows_L0-1);
-			col = conf_file.read16i(col_colnum, 0, conf_Nrows_L0-1);
+			row = conf_file.read16u(row_colnum, 0, conf_Nrows_L0-1);
+			col = conf_file.read16u(col_colnum, 0, conf_Nrows_L0-1);
 			pix = conf_file.read16i(pix_colnum, 0, conf_Nrows_L0-1);
 			
 			conf_file.close();
@@ -128,7 +127,7 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 			int16_t colindex = col[ir];
 			//cout << rowindex << " " << colindex << endl;
 			lutOffset[rowindex * lutOffset_col + colindex] = pix[ir];
-			//cout << rowindex << " " << colindex << " " << lut[rowindex * lut_col + colindex] << endl;
+			//cout << rowindex << " " << colindex << " " << lutOffset[rowindex * lutOffset_col + colindex] << endl;
 		}
 		
 		
@@ -138,8 +137,8 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 	}
 	
 	//load Grid Map
-	
-	
+	map = new CTAHexagonalPointyTopOddRowGridMap(row.size(), &row[0], &col[0], &pix[0], 1);
+	map->fillLUT();
 	
 	return 0;
 }

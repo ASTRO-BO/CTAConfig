@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 	
 	CTAMDArray array;
 	
-	array.loadConfig("AARPROD2", "./conf/PROD2_telconfig.fits.gz", "./conf/Aar.conf");
+	array.loadConfig("AARPROD2", "PROD2_telconfig.fits.gz", "Aar.conf", "./conf/");
 	
 	for(int i=0; i<array.telescopeTypes.size(); i++) {
 		cout << array.telescopeTypes[i]->getID() << endl;
@@ -70,5 +70,6 @@ int main(int argc, char *argv[])
 		cout << array.telescopes[i]->getTelescopeType()->getCameraType()->getNpixels() << " ";
 		cout << array.telescopes[i]->getCamera()->getNPixelsActive() << " " << array.telescopes[i]->getCamera()->getName() << " ";
 		cout << array.telescopes[i]->getTelescopeType()->getCameraType()->pixels[0]->getPixelType()->getNSamples() << endl;
+		
 	}
 }

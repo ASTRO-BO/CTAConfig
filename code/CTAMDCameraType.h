@@ -35,11 +35,11 @@ namespace CTAConfig {
 		int camTypeID;
 		string camTypeName;
 		
-		vector<int16_t> row;
-		vector<int16_t> col;
+		vector<uint16_t> row;
+		vector<uint16_t> col;
 		vector<int16_t> pix;
 		
-		CTAGridMap* map;
+		CTAHexagonalPointyTopOddRowGridMap* map;
 
 		
 
@@ -74,7 +74,7 @@ namespace CTAConfig {
 		inline uint16_t getGeometryLUTOffset_Ncols();
 		
 		
-		CTAGridMap* getMap();
+		CTAHexagonalPointyTopOddRowGridMap* getMap();
 		
 		
 	public:

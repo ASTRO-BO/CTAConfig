@@ -42,7 +42,7 @@ exec_prefix=$(prefix)
 # The directory to install the binary files in.
 bindir=$(exec_prefix)/bin
 # The directory to install the local configuration file.
-datadir=$(exec_prefix)/share
+datadir=$(exec_prefix)/share/
 # The directory to install the libraries in.
 libdir=$(exec_prefix)/lib
 # The directory to install the info files in.

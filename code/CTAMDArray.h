@@ -56,7 +56,7 @@ namespace CTAConfig {
 		/// \param name the name of the array
 		/// \filenameArray the name of the .fits file that contains the configuration of the array
 		/// \filenameAdditionalInfos the name of the file that contains the following info: TELTYPEID TELTYPENAME CAMERATYPENAME MIRRORTYPENAME LOOKUP-TABLE-CONFIG-FILE
-		void loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos);
+		void loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos, string basedir);
 
 		string getName();
 		

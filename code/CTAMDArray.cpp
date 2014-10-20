@@ -81,10 +81,12 @@ CTAConfig::CTAMDTelescopeType* CTAConfig::CTAMDArray::getTelescopeType(int64_t t
 }
 
 
-void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos) {
+void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos, string basedir) {
 	cout << "Load config add infos" << endl;
+	filenameAdditionalInfos = basedir + filenameAdditionalInfos;
 	loadAdds(filenameAdditionalInfos);
 	cout << "Load config" <<endl;
+	filenameArray = basedir + filenameArray;
 	ConfigLoadMCFITS config(filenameArray);
 	this->arrayConfigName = arrayName;
 	
@@ -144,7 +146,8 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		
 		//build the telescope type
 		CTAMDTelescopeType* telescopeType = new CTAMDTelescopeType(config.telescopeTypes[i].TelType, configArray[tt][1], cameraType, mirrorType, i);
-		telescopeType->getCameraType()->loadGeometryLUT(configArray[tt][4]);
+		string lutname = basedir + configArray[tt][4];
+		telescopeType->getCameraType()->loadGeometryLUT(lutname);
 		telescopeTypes.push_back(telescopeType);
 	}
 	
