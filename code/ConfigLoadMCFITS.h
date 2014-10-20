@@ -17,7 +17,7 @@
 #ifndef _CONFIGLOADMCFITS_H
 #define _CONFIGLOADMCFITS_H
 
-#include <qlbase/InputFileFITS.h>
+#include <rtautils/InputFileFITS.h>
 #include <iostream>
 #include <stdlib.h>
 

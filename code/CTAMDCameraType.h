@@ -21,6 +21,7 @@
 #include <string>
 #include "CTAMDPixel.h"
 #include <stdlib.h>
+#include "CTAGridMap.h"
 
 using namespace std;
 
@@ -37,6 +38,8 @@ namespace CTAConfig {
 		vector<int16_t> row;
 		vector<int16_t> col;
 		vector<int16_t> pix;
+		
+		CTAGridMap* map;
 
 		
 
@@ -69,6 +72,9 @@ namespace CTAConfig {
 		inline uint16_t getGeometryLUTOffset_Nrows();
 		
 		inline uint16_t getGeometryLUTOffset_Ncols();
+		
+		
+		CTAGridMap* getMap();
 		
 		
 	public:

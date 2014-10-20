@@ -28,12 +28,22 @@
 		DD783AF219E8F1E60033ACA2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DD783AF319E988E70033ACA2 /* CTAMDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTAMDCamera.cpp; sourceTree = "<group>"; };
 		DD783AF419E988E70033ACA2 /* CTAMDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAMDCamera.h; sourceTree = "<group>"; };
+		DDD7055719F4E9C2006672EA /* CTAGridMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTAGridMap.cpp; sourceTree = "<group>"; };
+		DDD7055819F4E9C2006672EA /* CTAGridMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAGridMap.h; sourceTree = "<group>"; };
+		DDD7055A19F4EAA9006672EA /* Aar.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Aar.conf; sourceTree = "<group>"; };
+		DDD7055B19F4EAA9006672EA /* LoookUpTable_CTA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoookUpTable_CTA.pdf; sourceTree = "<group>"; };
+		DDD7055C19F4EAA9006672EA /* LST_LOOKUP_TABLE.fits.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = LST_LOOKUP_TABLE.fits.gz; sourceTree = "<group>"; };
+		DDD7055D19F4EAA9006672EA /* MST_LOOKUP_TABLE.fits.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = MST_LOOKUP_TABLE.fits.gz; sourceTree = "<group>"; };
+		DDD7055E19F4EAA9006672EA /* PROD2_telconfig.fits.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = PROD2_telconfig.fits.gz; sourceTree = "<group>"; };
+		DDD7055F19F4EAA9006672EA /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		DDD7056019F4EAA9006672EA /* SST_LOOKUP_TABLE.fits.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = SST_LOOKUP_TABLE.fits.gz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		DD783AD119E8309C0033ACA2 = {
 			isa = PBXGroup;
 			children = (
+				DDD7055919F4EAA9006672EA /* conf */,
 				DD783AEE19E87B5D0033ACA2 /* Makefile */,
 				DD783ADC19E830BC0033ACA2 /* code */,
 			);
@@ -42,6 +52,8 @@
 		DD783ADC19E830BC0033ACA2 /* code */ = {
 			isa = PBXGroup;
 			children = (
+				DDD7055719F4E9C2006672EA /* CTAGridMap.cpp */,
+				DDD7055819F4E9C2006672EA /* CTAGridMap.h */,
 				DD783AF319E988E70033ACA2 /* CTAMDCamera.cpp */,
 				DD783AF419E988E70033ACA2 /* CTAMDCamera.h */,
 				DD783AF219E8F1E60033ACA2 /* main.cpp */,
@@ -64,6 +76,20 @@
 				DD783AE919E830BC0033ACA2 /* CTAMDTelescope.h */,
 			);
 			path = code;
+			sourceTree = "<group>";
+		};
+		DDD7055919F4EAA9006672EA /* conf */ = {
+			isa = PBXGroup;
+			children = (
+				DDD7055A19F4EAA9006672EA /* Aar.conf */,
+				DDD7055B19F4EAA9006672EA /* LoookUpTable_CTA.pdf */,
+				DDD7055C19F4EAA9006672EA /* LST_LOOKUP_TABLE.fits.gz */,
+				DDD7055D19F4EAA9006672EA /* MST_LOOKUP_TABLE.fits.gz */,
+				DDD7055E19F4EAA9006672EA /* PROD2_telconfig.fits.gz */,
+				DDD7055F19F4EAA9006672EA /* README */,
+				DDD7056019F4EAA9006672EA /* SST_LOOKUP_TABLE.fits.gz */,
+			);
+			path = conf;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

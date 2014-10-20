@@ -14,7 +14,7 @@
  ***************************************************************************/
 
 #include "CTAMDCameraType.h"
-#include <qlbase/InputFileFITS.h>
+#include <rtautils/InputFileFITS.h>
 #include <iostream>
 
 using namespace std;
@@ -66,6 +66,10 @@ CTAConfig::CTAMDPixel* CTAConfig::CTAMDCameraType::getPixel(int16_t pixelID) {
 			return pixels[i];
 	}
 	return 0;
+}
+
+CTAGridMap* CTAConfig::CTAMDCameraType::getMap() {
+	return map;
 }
 
 uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
@@ -132,6 +136,10 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 	catch (qlbase::IOException& e) {
 		cout << "ERROR: File "<< filename <<" does not exist. Error code: " << e.getErrorCode() << endl;
 	}
+	
+	//load Grid Map
+	
+	
 	
 	return 0;
 }
