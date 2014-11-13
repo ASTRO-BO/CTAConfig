@@ -11,6 +11,7 @@
 
 #include <cstdlib>
 #include <cstddef>
+#include <cstdint>
 
 #define GM_SAFE_CHECK
 
