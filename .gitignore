@@ -3,6 +3,7 @@ build
 lib/*
 obj/*
 version
+prefix
 
 # Ignore any executables
 bin/*
