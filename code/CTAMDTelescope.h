@@ -19,7 +19,7 @@
 #include "CTAMDCoordinate.h"
 #include "CTAMDTelescopeType.h"
 #include "CTAMDCamera.h"
-#include <stdlib.h>
+#include <string>
 
 namespace CTAConfig {
 	
@@ -40,15 +40,15 @@ namespace CTAConfig {
 		CTAMDTelescopeType* telescopeType;
 		CTAMDCamera* camera;
 		
-		string name;
+		std::string name;
 
 	public:
 		
-		CTAMDTelescope(int ID, string name, CTAMDCoordinate3D* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera);
+		CTAMDTelescope(int ID, std::string name, CTAMDCoordinate3D* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera);
 		
 		int getID();
 		
-		string getName();
+		std::string getName();
 
 		CTAMDTelescopeType* getTelescopeType();
 

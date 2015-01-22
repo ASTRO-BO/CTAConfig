@@ -15,11 +15,15 @@
 
 #include "CTAMDCamera.h"
 
-string CTAConfig::CTAMDCamera::getName() {
+using namespace std;
+
+namespace CTAConfig {
+
+string CTAMDCamera::getName() {
 	return this->name;
 }
 
-int16_t CTAConfig::CTAMDCamera::getPixelStatus(uint16_t pixelID) {
+int16_t CTAMDCamera::getPixelStatus(uint16_t pixelID) {
 	if(linear)
 		return pixelStatus[pixelID];
 	
@@ -31,7 +35,7 @@ int16_t CTAConfig::CTAMDCamera::getPixelStatus(uint16_t pixelID) {
 	return 0;
 }
 
-void CTAConfig::CTAMDCamera::addPixelStatus(uint16_t ID, int16_t status) {
+void CTAMDCamera::addPixelStatus(uint16_t ID, int16_t status) {
 	//cout << ID << " " << status << endl;
 	this->pixelStatus.push_back(status);
 	this->pixelID.push_back(ID);
@@ -40,21 +44,23 @@ void CTAConfig::CTAMDCamera::addPixelStatus(uint16_t ID, int16_t status) {
 		
 }
 
-CTAConfig::CTAMDCamera::CTAMDCamera(string name, CTAMDTelescopeType* telescopeType) {
+CTAMDCamera::CTAMDCamera(string name, CTAMDTelescopeType* telescopeType) {
 	this->name = name;
 	this->telescopeType = telescopeType;
 	linear = true;
 }
 
-CTAConfig::CTAMDCameraType* CTAConfig::CTAMDCamera::getCameraType() {
+CTAMDCameraType* CTAMDCamera::getCameraType() {
 	return telescopeType->getCameraType();
 }
 
-uint16_t CTAConfig::CTAMDCamera::getNPixelsActive() {
+uint16_t CTAMDCamera::getNPixelsActive() {
 	uint16_t nactive = 0;
 	for(uint16_t i = 0; i<this->pixelStatus.size(); i++) {
 		if(pixelStatus[i] == 0)
 			nactive++;
 	}
 	return nactive;
+}
+
 }

@@ -15,7 +15,11 @@
 
 #include "CTAMDMirrorType.h"
 
-CTAConfig::CTAMDMirrorType::CTAMDMirrorType(int16_t ID, string name, float FocalLength, float FOV, int nMirrors, float MirrorArea) {
+using namespace std;
+
+namespace CTAConfig {
+
+CTAMDMirrorType::CTAMDMirrorType(int16_t ID, string name, float FocalLength, float FOV, int nMirrors, float MirrorArea) {
 	this->ID = ID;
 	this->name = name;
 	this->FocalLength = FocalLength;
@@ -24,26 +28,28 @@ CTAConfig::CTAMDMirrorType::CTAMDMirrorType(int16_t ID, string name, float Focal
 	this->MirrorArea = MirrorArea;
 }
 
-float CTAConfig::CTAMDMirrorType::getFocalLength() {
+float CTAMDMirrorType::getFocalLength() {
 	return FocalLength;
 }
 
-float CTAConfig::CTAMDMirrorType::getFOV() {
+float CTAMDMirrorType::getFOV() {
 	return FOV;
 }
 
-int CTAConfig::CTAMDMirrorType::getNMirrors() {
+int CTAMDMirrorType::getNMirrors() {
 	return this->nMirrors;
 }
 
-float CTAConfig::CTAMDMirrorType::getMirrorArea() {
+float CTAMDMirrorType::getMirrorArea() {
 	return MirrorArea;
 }
 
-string CTAConfig::CTAMDMirrorType::getName() {
+string CTAMDMirrorType::getName() {
 	return this->name;
 }
 
-int16_t CTAConfig::CTAMDMirrorType::getID() {
+int16_t CTAMDMirrorType::getID() {
 	return this->ID;
+}
+
 }

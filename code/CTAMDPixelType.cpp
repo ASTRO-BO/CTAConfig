@@ -15,7 +15,9 @@
 
 #include "CTAMDPixelType.h"
 
-CTAConfig::CTAMDPixelType::CTAMDPixelType(int16_t pixTypeID, int16_t nSamples, float sampleTimeSlice, int16_t NGains, float hiLoScale, int16_t hiLoThreshold,float hiLoOffset) {
+namespace CTAConfig {
+
+CTAMDPixelType::CTAMDPixelType(int16_t pixTypeID, int16_t nSamples, float sampleTimeSlice, int16_t NGains, float hiLoScale, int16_t hiLoThreshold,float hiLoOffset) {
 	this->pixTypeID = pixTypeID;
 	this->nSamples = nSamples;
 	this->sampleTimeSlice = sampleTimeSlice;
@@ -25,30 +27,32 @@ CTAConfig::CTAMDPixelType::CTAMDPixelType(int16_t pixTypeID, int16_t nSamples, f
 	this->hiLoOffset = hiLoOffset;
 }
 
-int16_t CTAConfig::CTAMDPixelType::getID() {
+int16_t CTAMDPixelType::getID() {
 	return this->pixTypeID;
 }
 
-int16_t CTAConfig::CTAMDPixelType::getNSamples() {
+int16_t CTAMDPixelType::getNSamples() {
 	return this->nSamples;
 }
 
-float CTAConfig::CTAMDPixelType::getSampleTimeSlice() {
+float CTAMDPixelType::getSampleTimeSlice() {
 	return this->sampleTimeSlice;
 }
 
-int16_t CTAConfig::CTAMDPixelType::getNGains() {
+int16_t CTAMDPixelType::getNGains() {
 	return NGains;
 }
 
-float CTAConfig::CTAMDPixelType::getHiLoScale() {
+float CTAMDPixelType::getHiLoScale() {
 	return this->hiLoScale;
 }
 
-int16_t CTAConfig::CTAMDPixelType::getHiLoThreshold() {
+int16_t CTAMDPixelType::getHiLoThreshold() {
 	return this->hiLoThreshold;
 }
 
-float CTAConfig::CTAMDPixelType::getHiLoOffset() {
+float CTAMDPixelType::getHiLoOffset() {
 	return this->hiLoOffset;
+}
+
 }

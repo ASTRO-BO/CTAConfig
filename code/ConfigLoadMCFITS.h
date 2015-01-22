@@ -21,9 +21,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-using namespace std;
 namespace CTAConfig {
-    
     
     /// Uploading the CTA configuration parameters and converting
     /// them to metadata
@@ -37,7 +35,7 @@ namespace CTAConfig {
     public:
         /// It takes the CTA configuration file in FITS format
         /// \param confInputFileName The input file name of the CTA configuration
-        ConfigLoadMCFITS(const string& confInputFileName);
+        ConfigLoadMCFITS(const std::string& confInputFileName);
         
         ~ConfigLoadMCFITS();
 		
@@ -76,7 +74,7 @@ namespace CTAConfig {
             int16_t NPixel;
             int16_t NPixel_active;
             PixelType pixelType;
-            vector<Pixel> pixels;
+            std::vector<Pixel> pixels;
         };
         
         struct MirrorType {
@@ -105,37 +103,37 @@ namespace CTAConfig {
         struct Array {
             int16_t ArrayID;
             int16_t NTel;
-            vector<int16_t> vecTelID;
+            std::vector<int16_t> vecTelID;
         };
 		
-        vector<PixelType> pixelTypes;
-        vector< vector<Pixel> > pixels;
-        vector<CameraType> cameraTypes;
-        vector<MirrorType> mirrorTypes;
-        vector<TelescopeType> telescopeTypes;
-        vector<Telescope> telescopes;
+        std::vector<PixelType> pixelTypes;
+        std::vector< std::vector<Pixel> > pixels;
+        std::vector<CameraType> cameraTypes;
+        std::vector<MirrorType> mirrorTypes;
+        std::vector<TelescopeType> telescopeTypes;
+        std::vector<Telescope> telescopes;
         struct Array array;
         
         /// It gets the array structure
-        struct CTAConfig::ConfigLoadMCFITS::Array *getArray();
+        ConfigLoadMCFITS::Array *getArray();
         
         /// It gets the telescope structure from the identification number
-        struct CTAConfig::ConfigLoadMCFITS::Telescope *getTelescope(int TelID);
+        ConfigLoadMCFITS::Telescope *getTelescope(int TelID);
         
         /// It gets the telescope type structure from the type identification number
-        struct CTAConfig::ConfigLoadMCFITS::TelescopeType *getTelescopeType(int TelType);
+        ConfigLoadMCFITS::TelescopeType *getTelescopeType(int TelType);
         
         /// It gets the mirror structure from the mirror type identification number
-        struct CTAConfig::ConfigLoadMCFITS::MirrorType *getMirrorType(int mirType);
+        ConfigLoadMCFITS::MirrorType *getMirrorType(int mirType);
         
         /// It gets the camera structure from the camera type identification number
-        struct CTAConfig::ConfigLoadMCFITS::CameraType *getCameraType(int camType);
+        ConfigLoadMCFITS::CameraType *getCameraType(int camType);
         
         /// It gets the pixel structure from the pixel type identification number
-        struct CTAConfig::ConfigLoadMCFITS::PixelType *getPixelType(int pixType);
+        ConfigLoadMCFITS::PixelType *getPixelType(int pixType);
 
         /// It gets the pixel structure from the pixel type identification number
-        struct CTAConfig::ConfigLoadMCFITS::Pixel *getPixel(int camType, int pixelID);
+        ConfigLoadMCFITS::Pixel *getPixel(int camType, int pixelID);
         
     };
 }

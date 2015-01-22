@@ -15,8 +15,11 @@
 
 #include "CTAMDTelescope.h"
 
+using namespace std;
 
-CTAConfig::CTAMDTelescope::CTAMDTelescope(int ID, string name, CTAMDCoordinate3D* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera) {
+namespace CTAConfig {
+
+CTAMDTelescope::CTAMDTelescope(int ID, string name, CTAMDCoordinate3D* position, CTAMDTelescopeType* telescopeType, CTAMDCamera* camera) {
 	this->ID = ID;
 	this->position = position;
 	this->telescopeType = telescopeType;
@@ -26,22 +29,24 @@ CTAConfig::CTAMDTelescope::CTAMDTelescope(int ID, string name, CTAMDCoordinate3D
 
 
 
-int CTAConfig::CTAMDTelescope::getID() {
+int CTAMDTelescope::getID() {
 	return ID;
 }
 
-string CTAConfig::CTAMDTelescope::getName() {
+string CTAMDTelescope::getName() {
 	return name;
 }
 
-CTAConfig::CTAMDTelescopeType* CTAConfig::CTAMDTelescope::getTelescopeType() {
+CTAMDTelescopeType* CTAMDTelescope::getTelescopeType() {
 	return telescopeType;
 }
 
-CTAConfig::CTAMDCoordinate3D* CTAConfig::CTAMDTelescope::getPosition() {
+CTAMDCoordinate3D* CTAMDTelescope::getPosition() {
 	return this->position;
 }
 
-CTAConfig::CTAMDCamera* CTAConfig::CTAMDTelescope::getCamera() {
+CTAMDCamera* CTAMDTelescope::getCamera() {
 	return camera;
+}
+
 }

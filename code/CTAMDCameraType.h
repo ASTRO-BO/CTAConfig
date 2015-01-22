@@ -20,12 +20,10 @@
 #include <vector>
 #include <string>
 #include "CTAMDPixel.h"
-#include <stdlib.h>
 #include "CTAGridMap.h"
 
-using namespace std;
-
 namespace CTAConfig {
+
 	class CTAMDCameraType {
 
 	private:
@@ -33,11 +31,11 @@ namespace CTAConfig {
 		float cameraCentreOffset;
 		float cameraRotation;
 		int camTypeID;
-		string camTypeName;
+		std::string camTypeName;
 		
-		vector<uint16_t> row;
-		vector<uint16_t> col;
-		vector<int16_t> pix;
+		std::vector<uint16_t> row;
+		std::vector<uint16_t> col;
+		std::vector<int16_t> pix;
 		
 		CTAHexagonalPointyTopOddRowGridMap* map;
 
@@ -45,13 +43,13 @@ namespace CTAConfig {
 
 	public:
 		
-		CTAMDCameraType(int camTypeID, string camTypeName, float cameraScaleFactor, float cameraCentreOffset, float cameraRotation);
+		CTAMDCameraType(int camTypeID, std::string camTypeName, float cameraScaleFactor, float cameraCentreOffset, float cameraRotation);
 		
 		void addPixel(CTAMDPixel* pixel);
 		
 		int getID();
 		
-		string getName();
+		std::string getName();
 		
 		float getCameraScaleFactor();
 
@@ -63,7 +61,7 @@ namespace CTAConfig {
 		
 		CTAMDPixel* getPixel(int16_t pixelID);
 		
-		uint16_t loadGeometryLUT(string filename);
+		uint16_t loadGeometryLUT(std::string filename);
 		
 		/// -1 the pixel is not part of the geometry
 		/// -2 out of index
@@ -79,7 +77,7 @@ namespace CTAConfig {
 		
 	public:
 		
-		vector<CTAMDPixel*> pixels;
+		std::vector<CTAMDPixel*> pixels;
 		
 		///lut loaded from file that contains the index to the array of data
 		int16_t* lutOffset;

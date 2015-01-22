@@ -22,25 +22,23 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
 namespace CTAConfig {
 	
 	class CTAMDCamera {
 
 	private:
-		string name;
+		std::string name;
 		//0 active, 2 off
-		vector<int16_t> pixelStatus;
-		vector<uint16_t> pixelID;
+		std::vector<int16_t> pixelStatus;
+		std::vector<uint16_t> pixelID;
 		CTAMDTelescopeType* telescopeType;
 		bool linear;
 
 	public:
 		
-		CTAMDCamera(string name, CTAMDTelescopeType* telescopeType);
+		CTAMDCamera(std::string name, CTAMDTelescopeType* telescopeType);
 		
-		string getName();
+		std::string getName();
 		
 		int16_t getPixelStatus(uint16_t pixelID);
 		

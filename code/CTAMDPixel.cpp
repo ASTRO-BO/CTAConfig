@@ -15,7 +15,9 @@
 
 #include "CTAMDPixel.h"
 
-CTAConfig::CTAMDPixel::CTAMDPixel(int16_t pixelID, CTAMDCoordinate2D* tubeMM, float RTubeMM, CTAMDCoordinate2D* tubeDeg, float RTubeDeg, CTAMDPixelType* pixelType) {
+namespace CTAConfig {
+
+CTAMDPixel::CTAMDPixel(int16_t pixelID, CTAMDCoordinate2D* tubeMM, float RTubeMM, CTAMDCoordinate2D* tubeDeg, float RTubeDeg, CTAMDPixelType* pixelType) {
 	this->ID = pixelID;
 	this->tubeMM = tubeMM;
 	this->RTubeMM = RTubeMM;
@@ -24,19 +26,21 @@ CTAConfig::CTAMDPixel::CTAMDPixel(int16_t pixelID, CTAMDCoordinate2D* tubeMM, fl
 	this->pixelType = pixelType;
 }
 
-int16_t CTAConfig::CTAMDPixel::getID() {
+int16_t CTAMDPixel::getID() {
 	return ID;
 }
 
-CTAConfig::CTAMDCoordinate2D* CTAConfig::CTAMDPixel::getTubeMM() {
+CTAMDCoordinate2D* CTAMDPixel::getTubeMM() {
 	return this->tubeMM;
 }
 
-CTAConfig::CTAMDCoordinate2D* CTAConfig::CTAMDPixel::getTubeDeg() {
+CTAMDCoordinate2D* CTAMDPixel::getTubeDeg() {
 	return this->tubeDeg;
 }
 
 
-CTAConfig::CTAMDPixelType* CTAConfig::CTAMDPixel::getPixelType() {
+CTAMDPixelType* CTAMDPixel::getPixelType() {
 	return this->pixelType;
+}
+
 }

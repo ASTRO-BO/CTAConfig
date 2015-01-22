@@ -18,10 +18,9 @@
 #define _CTAMDARRAY_H
 
 #include <string>
+#include <vector>
 #include "CTAMDTelescope.h"
 #include <ctautils/InputFileFITS.h>
-
-using namespace std;
 
 namespace CTAConfig {
 	/**
@@ -30,8 +29,8 @@ namespace CTAConfig {
 	class CTAMDArray {
 
 	private:
-		string arrayConfigName;
-		string name;
+		std::string arrayConfigName;
+		std::string name;
 		
 		qlbase::InputFileFITS conf_file;
 		
@@ -40,12 +39,12 @@ namespace CTAConfig {
 		
 	protected:
 		
-		void loadAdds(string filename);
+		void loadAdds(std::string filename);
 
 	public:
-		string getArrayConfigName();
+		std::string getArrayConfigName();
 
-		void setArrayConfigName(string arrayConfigName);
+		void setArrayConfigName(std::string arrayConfigName);
 
 		CTAMDTelescope* getTelescope(int telID);
 		
@@ -56,14 +55,14 @@ namespace CTAConfig {
 		/// \param name the name of the array
 		/// \filenameArray the name of the .fits file that contains the configuration of the array
 		/// \filenameAdditionalInfos the name of the file that contains the following info: TELTYPEID TELTYPENAME CAMERATYPENAME MIRRORTYPENAME LOOKUP-TABLE-CONFIG-FILE
-		void loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos, string basedir);
+		void loadConfig(std::string arrayName, std::string filenameArray, std::string filenameAdditionalInfos, std::string basedir);
 
-		string getName();
+		std::string getName();
 		
 	public:
 		
-		vector<CTAMDTelescope*> telescopes;
-		vector<CTAMDTelescopeType*> telescopeTypes;
+		std::vector<CTAMDTelescope*> telescopes;
+		std::vector<CTAMDTelescopeType*> telescopeTypes;
 	};
 }
 #endif

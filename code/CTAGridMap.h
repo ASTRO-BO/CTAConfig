@@ -15,6 +15,8 @@
 
 #define GM_SAFE_CHECK
 
+namespace CTAConfig {
+
 class CTAGridMap {
 
 public:
@@ -115,4 +117,6 @@ private:
 	
 };
 
-#endif // __RTA_GRID_MAP_H__
+}
+
+#endif // __CTA_GRID_MAP_H__

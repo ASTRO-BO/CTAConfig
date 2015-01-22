@@ -19,6 +19,10 @@
 #include <fstream>
 #include <iostream>
 
+using namespace std;
+
+namespace CTAConfig {
+
 void split(vector<string> &tokens, const string &text, char sep) {
 	unsigned int start = 0, end = 0;
 	while ((end = text.find(sep, start)) != string::npos) {
@@ -30,15 +34,15 @@ void split(vector<string> &tokens, const string &text, char sep) {
 
 
 
-string CTAConfig::CTAMDArray::getArrayConfigName() {
+string CTAMDArray::getArrayConfigName() {
 	return this->arrayConfigName;
 }
 
-void CTAConfig::CTAMDArray::setArrayConfigName(string arrayConfigName) {
+void CTAMDArray::setArrayConfigName(string arrayConfigName) {
 	this->arrayConfigName = arrayConfigName;
 }
 
-CTAConfig::CTAMDTelescope* CTAConfig::CTAMDArray::getTelescope(int telID) {
+CTAMDTelescope* CTAMDArray::getTelescope(int telID) {
 	for(unsigned int i=0; i<telescopes.size(); i++) {
 		if(telescopes[i]->getID() == telID)
 			return telescopes[i];
@@ -47,7 +51,7 @@ CTAConfig::CTAMDTelescope* CTAConfig::CTAMDArray::getTelescope(int telID) {
 }
 
 
-void CTAConfig::CTAMDArray::loadAdds(string filename)
+void CTAMDArray::loadAdds(string filename)
 {
 	string s;
 	ifstream infile;
@@ -72,7 +76,7 @@ void CTAConfig::CTAMDArray::loadAdds(string filename)
 }
 
 
-CTAConfig::CTAMDTelescopeType* CTAConfig::CTAMDArray::getTelescopeType(int64_t telTypeID) {
+CTAMDTelescopeType* CTAMDArray::getTelescopeType(int64_t telTypeID) {
 	for(unsigned int i=0; i<telescopeTypes.size(); i++) {
 		if(telescopeTypes[i]->getID() == telTypeID)
 			return telescopeTypes[i];
@@ -81,7 +85,7 @@ CTAConfig::CTAMDTelescopeType* CTAConfig::CTAMDArray::getTelescopeType(int64_t t
 }
 
 
-void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos, string basedir) {
+void CTAMDArray::loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos, string basedir) {
 	cout << "Load config add infos" << endl;
 	filenameAdditionalInfos = basedir + filenameAdditionalInfos;
 	loadAdds(filenameAdditionalInfos);
@@ -108,12 +112,12 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		
 		//FocalLength, float FOV, int nMirrors, float MirrorArea
 		
-		struct CTAConfig::ConfigLoadMCFITS::MirrorType *mirr = config.getMirrorType(config.telescopeTypes[i].mirrorType.mirType);
+		ConfigLoadMCFITS::MirrorType *mirr = config.getMirrorType(config.telescopeTypes[i].mirrorType.mirType);
 		
 		CTAMDMirrorType* mirrorType = new CTAMDMirrorType(mirr->mirType, configArray[tt][3], mirr->FL, mirr->FOV, mirr->NMirrors, mirr->MirrorArea);
 		
 		//int camTypeID, string camTypeName, float cameraScaleFactor, float cameraCentreOffset, float cameraRotation
-		struct CTAConfig::ConfigLoadMCFITS::CameraType* cam = config.getCameraType(config.telescopeTypes[i].cameraType.camType);
+		ConfigLoadMCFITS::CameraType* cam = config.getCameraType(config.telescopeTypes[i].cameraType.camType);
 		
 		
 		CTAMDCameraType* cameraType  = new CTAMDCameraType(cam->camType, configArray[tt][2], cam->CameraScaleFactor, cam->CameraCentreOffset, cam->CameraRotation);
@@ -123,7 +127,7 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		cout << cam->NPixel << endl;
 		cout << "pixtype " << cam->pixelType.pixType << endl;
 		*/
-		struct CTAConfig::ConfigLoadMCFITS::PixelType* pixtyp = config.getPixelType(cam->pixelType.pixType);
+		ConfigLoadMCFITS::PixelType* pixtyp = config.getPixelType(cam->pixelType.pixType);
 		//cout << "samp " << pixtyp->NSamples << endl;
 		
 		//int16_t pixTypeID, int16_t nSamples, float sampleTimeSlice, int16_t NGains, float hiLoScale, int16_t hiLoThreshold,float hiLoOffset
@@ -134,7 +138,7 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		//build the list of pixels of the camera type
 		for(int pi=0; pi<cam->NPixel; pi++) {
 		
-			struct CTAConfig::ConfigLoadMCFITS::Pixel* pix =  config.getPixel(cam->camType, pi);
+			ConfigLoadMCFITS::Pixel* pix =  config.getPixel(cam->camType, pi);
 			if(pix != 0) {
 				CTAMDCoordinate2D* pos = new CTAMDCoordinate2D(pix->XTubeMM, pix->YTubeMM);
 				CTAMDCoordinate2D* rot = new CTAMDCoordinate2D(pix->XTubeDeg, pix->YTubeDeg);
@@ -165,9 +169,9 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		//camName += s;
 		CTAMDCamera* camera = new CTAMDCamera(camName, telescopeType);
 		//pixel status
-		struct CTAConfig::ConfigLoadMCFITS::CameraType* cam = config.getCameraType(telescopeType->getCameraType()->getID());
+		ConfigLoadMCFITS::CameraType* cam = config.getCameraType(telescopeType->getCameraType()->getID());
 		for(int pi=0; pi<cam->NPixel; pi++) {
-			struct CTAConfig::ConfigLoadMCFITS::Pixel* pix = config.getPixel(cam->camType, pi);
+			ConfigLoadMCFITS::Pixel* pix = config.getPixel(cam->camType, pi);
 			if(pix != 0) {
 				camera->addPixelStatus(pix->PixelID, pix->TubeOFF);
 			}
@@ -184,6 +188,8 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 	cout << "End load config" <<endl;
 }
 
-string CTAConfig::CTAMDArray::getName() {
+string CTAMDArray::getName() {
 	return this->name;
+}
+
 }

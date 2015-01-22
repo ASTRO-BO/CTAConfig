@@ -20,14 +20,18 @@
 #define CONF_L0HEADER 1
 #define CONF_L1HEADER 2
 
-CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
+using namespace std;
+
+namespace CTAConfig {
+
+ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 	/// structure declaration
-	struct PixelType temp_pixtype;
-	struct Pixel temp_pixel;
-	struct CameraType temp_camtype;
-	struct MirrorType temp_mirtype;
-	struct TelescopeType temp_teltype;
-	struct Telescope temp_tel;
+	PixelType temp_pixtype;
+	Pixel temp_pixel;
+	CameraType temp_camtype;
+	MirrorType temp_mirtype;
+	TelescopeType temp_teltype;
+	Telescope temp_tel;
 	
 	/// FITS structure parameters definition
 	//int conf_Nheader;
@@ -378,11 +382,11 @@ CTAConfig::ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 	}
 }
 
-struct CTAConfig::ConfigLoadMCFITS::Array *CTAConfig::ConfigLoadMCFITS::getArray() {
+ConfigLoadMCFITS::Array *ConfigLoadMCFITS::getArray() {
 	return &array;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::Telescope *CTAConfig::ConfigLoadMCFITS::getTelescope(int TelID) {
+ConfigLoadMCFITS::Telescope *ConfigLoadMCFITS::getTelescope(int TelID) {
 	for (int i=0; i<array.NTel; i++) {
     	if (telescopes[i].TelID == TelID){
     		return &telescopes[i];
@@ -391,7 +395,7 @@ struct CTAConfig::ConfigLoadMCFITS::Telescope *CTAConfig::ConfigLoadMCFITS::getT
 	return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::TelescopeType *CTAConfig::ConfigLoadMCFITS::getTelescopeType(int TelType) {
+ConfigLoadMCFITS::TelescopeType *ConfigLoadMCFITS::getTelescopeType(int TelType) {
 	for (int i=0; i<NTelType; i++) {
     	if (telescopeTypes[i].TelType == TelType){
     		return &telescopeTypes[i];
@@ -400,7 +404,7 @@ struct CTAConfig::ConfigLoadMCFITS::TelescopeType *CTAConfig::ConfigLoadMCFITS::
     return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::MirrorType *CTAConfig::ConfigLoadMCFITS::getMirrorType(int mirType) {
+ConfigLoadMCFITS::MirrorType *ConfigLoadMCFITS::getMirrorType(int mirType) {
 	for (int i=0; i<NTelType; i++) {
     	if (mirrorTypes[i].mirType == mirType){
     		return &mirrorTypes[i];
@@ -409,7 +413,7 @@ struct CTAConfig::ConfigLoadMCFITS::MirrorType *CTAConfig::ConfigLoadMCFITS::get
     return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::CameraType *CTAConfig::ConfigLoadMCFITS::getCameraType(int camType) {
+ConfigLoadMCFITS::CameraType *ConfigLoadMCFITS::getCameraType(int camType) {
 	for (int i=0; i<NTelType; i++) {
     	if (cameraTypes[i].camType == camType){
     		return &cameraTypes[i];
@@ -418,7 +422,7 @@ struct CTAConfig::ConfigLoadMCFITS::CameraType *CTAConfig::ConfigLoadMCFITS::get
     return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::PixelType *CTAConfig::ConfigLoadMCFITS::getPixelType(int pixType) {
+ConfigLoadMCFITS::PixelType *ConfigLoadMCFITS::getPixelType(int pixType) {
 	for (int i=0; i<NTelType; i++) {
     	if (pixelTypes[i].pixType == pixType){
     		return &pixelTypes[i];
@@ -427,8 +431,8 @@ struct CTAConfig::ConfigLoadMCFITS::PixelType *CTAConfig::ConfigLoadMCFITS::getP
     return 0;
 }
 
-struct CTAConfig::ConfigLoadMCFITS::Pixel *CTAConfig::ConfigLoadMCFITS::getPixel(int camType, int pixelID) {
-	//vector<struct CTAConfig::ConfigLoadMCFITS::Pixel> *selPixel;
+ConfigLoadMCFITS::Pixel *ConfigLoadMCFITS::getPixel(int camType, int pixelID) {
+	//vector<Pixel> *selPixel;
 	for (int i=0; i<NTelType; i++) {
     	if (cameraTypes[i].camType == camType){
     	    return &pixels[i][pixelID];
@@ -437,10 +441,9 @@ struct CTAConfig::ConfigLoadMCFITS::Pixel *CTAConfig::ConfigLoadMCFITS::getPixel
     return 0;
 }
 
-CTAConfig::ConfigLoadMCFITS::~ConfigLoadMCFITS() {
+ConfigLoadMCFITS::~ConfigLoadMCFITS() {
 	conf_file.close();
     
 }
 
-
-
+}

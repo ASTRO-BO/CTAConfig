@@ -15,8 +15,11 @@
 
 #include "CTAMDTelescopeType.h"
 
+using namespace std;
 
-CTAConfig::CTAMDTelescopeType::CTAMDTelescopeType(int64_t ID, string name, CTAConfig::CTAMDCameraType* cameraType, CTAConfig::CTAMDMirrorType* mirrorType, uint16_t internaleCounter) {
+namespace CTAConfig {
+
+CTAMDTelescopeType::CTAMDTelescopeType(int64_t ID, string name, CTAMDCameraType* cameraType, CTAMDMirrorType* mirrorType, uint16_t internaleCounter) {
 	this->ID = ID;
 	this->name = name;
 	this->cameraType = cameraType;
@@ -24,18 +27,20 @@ CTAConfig::CTAMDTelescopeType::CTAMDTelescopeType(int64_t ID, string name, CTACo
 	this->internaleCounter = internaleCounter;
 }
 
-int64_t CTAConfig::CTAMDTelescopeType::getID() {
+int64_t CTAMDTelescopeType::getID() {
 	return ID;
 }
 
-CTAConfig::CTAMDCameraType* CTAConfig::CTAMDTelescopeType::getCameraType() {
+CTAMDCameraType* CTAMDTelescopeType::getCameraType() {
 	return this->cameraType;
 }
 
-CTAConfig::CTAMDMirrorType* CTAConfig::CTAMDTelescopeType::getMirrorType() {
+CTAMDMirrorType* CTAMDTelescopeType::getMirrorType() {
 	return this->mirrorType;
 }
 
-string CTAConfig::CTAMDTelescopeType::getName() {
+string CTAMDTelescopeType::getName() {
 	return this->name;
+}
+
 }

@@ -17,10 +17,7 @@
 #ifndef _CTAMDMIRRORTYPE_H
 #define _CTAMDMIRRORTYPE_H
 
-#include <stdlib.h>
 #include <string>
-
-using namespace std;
 
 namespace CTAConfig {
 	/**
@@ -32,7 +29,7 @@ namespace CTAConfig {
 		
 		int16_t ID;
 		
-		string name;
+		std::string name;
 		
 		/**
 		 * FITS::FL
@@ -53,7 +50,7 @@ namespace CTAConfig {
 
 	public:
 		
-		CTAMDMirrorType(int16_t ID, string name, float FocalLength, float FOV, int nMirrors, float MirrorArea);
+		CTAMDMirrorType(int16_t ID, std::string name, float FocalLength, float FOV, int nMirrors, float MirrorArea);
 		
 		float getFocalLength();
 
@@ -63,7 +60,7 @@ namespace CTAConfig {
 
 		float getMirrorArea();
 		
-		string getName();
+		std::string getName();
 		
 		int16_t getID();
 	};

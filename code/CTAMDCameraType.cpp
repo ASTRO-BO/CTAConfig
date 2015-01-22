@@ -19,9 +19,11 @@
 
 using namespace std;
 
+namespace CTAConfig {
+
 #define L0HEADER 1
 
-CTAConfig::CTAMDCameraType::CTAMDCameraType(int camTypeID, string camTypeName, float cameraScaleFactor, float cameraCentreOffset, float cameraRotation) {
+CTAMDCameraType::CTAMDCameraType(int camTypeID, string camTypeName, float cameraScaleFactor, float cameraCentreOffset, float cameraRotation) {
 	this->camTypeID = camTypeID;
 	this->camTypeName = camTypeName;
 	this->cameraScaleFactor = cameraScaleFactor;
@@ -29,38 +31,38 @@ CTAConfig::CTAMDCameraType::CTAMDCameraType(int camTypeID, string camTypeName, f
 	this->cameraRotation = cameraRotation;
 }
 
-void CTAConfig::CTAMDCameraType::addPixel(CTAMDPixel* pixel) {
+void CTAMDCameraType::addPixel(CTAMDPixel* pixel) {
 	pixels.push_back(pixel);
 }
 
-int CTAConfig::CTAMDCameraType::getID() {
+int CTAMDCameraType::getID() {
 	return this->camTypeID;
 }
 
-string CTAConfig::CTAMDCameraType::getName() {
+string CTAMDCameraType::getName() {
 	return this->camTypeName;
 }
 
-float CTAConfig::CTAMDCameraType::getCameraScaleFactor() {
+float CTAMDCameraType::getCameraScaleFactor() {
 	return this->cameraScaleFactor;
 }
 
-float CTAConfig::CTAMDCameraType::getCameraCentreOffset() {
+float CTAMDCameraType::getCameraCentreOffset() {
 	return this->cameraCentreOffset;
 }
 
-float CTAConfig::CTAMDCameraType::getCameraRotation() {
+float CTAMDCameraType::getCameraRotation() {
 	return this->cameraRotation;
 }
 
 
 
-short CTAConfig::CTAMDCameraType::getNpixels() {
+short CTAMDCameraType::getNpixels() {
 	return this->pixels.size();
 }
 
 
-CTAConfig::CTAMDPixel* CTAConfig::CTAMDCameraType::getPixel(int16_t pixelID) {
+CTAMDPixel* CTAMDCameraType::getPixel(int16_t pixelID) {
 	for(unsigned int i=0; i<pixels.size(); i++) {
 		if(pixels[i]->getID() == pixelID)
 			return pixels[i];
@@ -68,11 +70,11 @@ CTAConfig::CTAMDPixel* CTAConfig::CTAMDCameraType::getPixel(int16_t pixelID) {
 	return 0;
 }
 
-CTAHexagonalPointyTopOddRowGridMap* CTAConfig::CTAMDCameraType::getMap() {
+CTAHexagonalPointyTopOddRowGridMap* CTAMDCameraType::getMap() {
 	return map;
 }
 
-uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
+uint16_t CTAMDCameraType::loadGeometryLUT(string fn) {
 	qlbase::InputFileFITS conf_file;
 	
 	string filename = fn;
@@ -143,7 +145,7 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 	return 0;
 }
 
-int16_t CTAConfig::CTAMDCameraType::getGeometryLUTOffsetValue(int16_t row, int16_t col) {
+int16_t CTAMDCameraType::getGeometryLUTOffsetValue(int16_t row, int16_t col) {
 	if(row > lutOffset_row)
 		return -2;
 	if(col > lutOffset_col)
@@ -151,10 +153,12 @@ int16_t CTAConfig::CTAMDCameraType::getGeometryLUTOffsetValue(int16_t row, int16
 	return lutOffset[row * lutOffset_col + col];
 }
 
-uint16_t CTAConfig::CTAMDCameraType::getGeometryLUTOffset_Nrows() {
+uint16_t CTAMDCameraType::getGeometryLUTOffset_Nrows() {
 	return lutOffset_row;
 }
 
-uint16_t CTAConfig::CTAMDCameraType::getGeometryLUTOffset_Ncols() {
+uint16_t CTAMDCameraType::getGeometryLUTOffset_Ncols() {
 	return lutOffset_col;
+}
+
 }

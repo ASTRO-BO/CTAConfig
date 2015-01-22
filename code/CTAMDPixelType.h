@@ -17,7 +17,7 @@
 #ifndef _CTAMDPIXELTYPE_H
 #define _CTAMDPIXELTYPE_H
 
-#include <stdlib.h>
+#include <cstdlib>
 
 namespace CTAConfig {
 	
