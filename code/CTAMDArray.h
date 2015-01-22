@@ -19,7 +19,7 @@
 
 #include <string>
 #include "CTAMDTelescope.h"
-#include <rtautils/InputFileFITS.h>
+#include <ctautils/InputFileFITS.h>
 
 using namespace std;
 

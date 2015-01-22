@@ -14,7 +14,7 @@
  ***************************************************************************/
 
 #include "CTAMDCameraType.h"
-#include <rtautils/InputFileFITS.h>
+#include <ctautils/InputFileFITS.h>
 #include <iostream>
 
 using namespace std;

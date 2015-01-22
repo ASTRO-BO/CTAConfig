@@ -75,7 +75,7 @@ CC = gcc
 
 #Set INCPATH to add the inclusion paths
 INCPATH = -I $(INCLUDE_DIR) -I $(CTARTA)/include -L$(CTARTA)/lib
-LIBS = -lstdc++ -lRTAUtils
+LIBS = -lstdc++ -lCTAUtils
 #Insert the optional parameter to the compiler. The CFLAGS could be changed externally by the user
 CFLAGS   = -g
 #Insert the implicit parameter to the compiler:

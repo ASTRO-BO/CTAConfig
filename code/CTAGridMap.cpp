@@ -10,7 +10,7 @@
 #include <limits>
 #include <cmath>
 
-#include "rtautils/Matrix.h"
+#include <ctautils/Matrix.h>
 
 #include "CTAGridMap.h"
 
