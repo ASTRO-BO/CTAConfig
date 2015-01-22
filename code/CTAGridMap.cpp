@@ -16,7 +16,7 @@
 
 using namespace std;
 
-CTAGridMap::CTAGridMap(Size n, Size *row, Size *col, Index *pixId) : r(0), c(0), pixId(0), xc(0), yc(0), xs(0), ys(0), nr(0), nc(0) {
+CTAGridMap::CTAGridMap(Size n, Size *row, Size *col, Index *pixId) : pixId(0), xc(0), yc(0), xs(0), ys(0), nr(0), nc(0), r(0), c(0) {
 
 	// Record the number of valid pixels
 	this->n = n;
@@ -263,7 +263,7 @@ void CTAHexagonalPointyTopOddRowGridMap::fillNeighborsLUT() {
             rowOff = evenRowOff;
         }
         
-        for (size_t j = 0; j < c; j++) {
+        for (Size j = 0; j < c; j++) {
             
             for (Size k = 0; k < 6; k++) {
                 

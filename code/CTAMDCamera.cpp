@@ -35,7 +35,7 @@ void CTAConfig::CTAMDCamera::addPixelStatus(uint16_t ID, int16_t status) {
 	//cout << ID << " " << status << endl;
 	this->pixelStatus.push_back(status);
 	this->pixelID.push_back(ID);
-	if(linear && this->pixelID.size() != ID + 1)
+	if(linear && (uint16_t)this->pixelID.size() != ID + 1)
 		linear = false;
 		
 }

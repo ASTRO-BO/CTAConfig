@@ -61,7 +61,7 @@ short CTAConfig::CTAMDCameraType::getNpixels() {
 
 
 CTAConfig::CTAMDPixel* CTAConfig::CTAMDCameraType::getPixel(int16_t pixelID) {
-	for(int i=0; i<pixels.size(); i++) {
+	for(unsigned int i=0; i<pixels.size(); i++) {
 		if(pixels[i]->getID() == pixelID)
 			return pixels[i];
 	}
@@ -107,7 +107,7 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 		//build the lut
 		//get row max
 		int16_t maxrow=0;
-		for(int i=0; i<row.size(); i++) {
+		for(unsigned int i=0; i<row.size(); i++) {
 			if(row[i] > maxrow)
 				maxrow = row[i];
 		}
@@ -115,14 +115,14 @@ uint16_t CTAConfig::CTAMDCameraType::loadGeometryLUT(string fn) {
 		lutOffset_row = maxrow + 1;
 		//get row max
 		int16_t maxcol=0;
-		for(int i=0; i<col.size(); i++) {
+		for(unsigned int i=0; i<col.size(); i++) {
 			if(col[i] > maxcol)
 				maxcol = col[i];
 		}
 		//cout << maxcol << endl;
 		lutOffset_col = maxcol + 1;
 		lutOffset = (int16_t*) new int16_t[lutOffset_row * lutOffset_col];
-		for(int ir=0; ir < row.size(); ir++) {
+		for(unsigned int ir=0; ir < row.size(); ir++) {
 			int16_t rowindex = row[ir];
 			int16_t colindex = col[ir];
 			//cout << rowindex << " " << colindex << endl;

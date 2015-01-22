@@ -20,7 +20,7 @@
 #include <iostream>
 
 void split(vector<string> &tokens, const string &text, char sep) {
-	int start = 0, end = 0;
+	unsigned int start = 0, end = 0;
 	while ((end = text.find(sep, start)) != string::npos) {
 		tokens.push_back(text.substr(start, end - start));
 		start = end + 1;
@@ -39,7 +39,7 @@ void CTAConfig::CTAMDArray::setArrayConfigName(string arrayConfigName) {
 }
 
 CTAConfig::CTAMDTelescope* CTAConfig::CTAMDArray::getTelescope(int telID) {
-	for(int i=0; i<telescopes.size(); i++) {
+	for(unsigned int i=0; i<telescopes.size(); i++) {
 		if(telescopes[i]->getID() == telID)
 			return telescopes[i];
 	}
@@ -73,7 +73,7 @@ void CTAConfig::CTAMDArray::loadAdds(string filename)
 
 
 CTAConfig::CTAMDTelescopeType* CTAConfig::CTAMDArray::getTelescopeType(int64_t telTypeID) {
-	for(int i=0; i<telescopeTypes.size(); i++) {
+	for(unsigned int i=0; i<telescopeTypes.size(); i++) {
 		if(telescopeTypes[i]->getID() == telTypeID)
 			return telescopeTypes[i];
 	}
@@ -92,11 +92,11 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 	
 	
 
-	for(int i=0; i<config.telescopeTypes.size(); i++) {
+	for(unsigned int i=0; i<config.telescopeTypes.size(); i++) {
 		
 		//get meta infos
 		int64_t TelType = config.telescopeTypes[i].TelType;
-		int tt;
+		unsigned int tt;
 		for(tt = 0; tt < configArray.size(); tt++) {
 			int64_t teltypeid;
 			stringstream(configArray[tt][0]) >> teltypeid;
@@ -151,7 +151,7 @@ void CTAConfig::CTAMDArray::loadConfig(string arrayName, string filenameArray, s
 		telescopeTypes.push_back(telescopeType);
 	}
 	
-	for(int i=0; i<config.telescopes.size(); i++) {
+	for(unsigned int i=0; i<config.telescopes.size(); i++) {
 		cout << config.telescopes[i].TelID << " " << config.telescopes[i].telescopeType.TelType << endl;
 		
 		CTAMDTelescopeType* telescopeType = getTelescopeType(config.telescopes[i].telescopeType.TelType);
