@@ -15,6 +15,7 @@
 #include "CTAGridMap.h"
 
 using namespace std;
+using namespace CTAUtils;
 
 namespace CTAConfig {
 

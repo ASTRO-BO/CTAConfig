@@ -29,7 +29,7 @@ namespace CTAConfig {
     class ConfigLoadMCFITS {
         
     private:
-        qlbase::InputFileFITS conf_file;
+        CTAUtils::InputFileFITS conf_file;
         
         
     public:

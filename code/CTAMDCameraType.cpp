@@ -75,7 +75,7 @@ CTAHexagonalPointyTopOddRowGridMap* CTAMDCameraType::getMap() {
 }
 
 uint16_t CTAMDCameraType::loadGeometryLUT(string fn) {
-	qlbase::InputFileFITS conf_file;
+	CTAUtils::InputFileFITS conf_file;
 	
 	string filename = fn;
 	
@@ -134,7 +134,7 @@ uint16_t CTAMDCameraType::loadGeometryLUT(string fn) {
 		
 		
 	}
-	catch (qlbase::IOException& e) {
+	catch (CTAUtils::IOException& e) {
 		cout << "ERROR: File "<< filename <<" does not exist. Error code: " << e.getErrorCode() << endl;
 	}
 	

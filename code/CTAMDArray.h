@@ -19,8 +19,8 @@
 
 #include <string>
 #include <vector>
-#include "CTAMDTelescope.h"
 #include <ctautils/InputFileFITS.h>
+#include "CTAMDTelescope.h"
 
 namespace CTAConfig {
 	/**
@@ -32,7 +32,7 @@ namespace CTAConfig {
 		std::string arrayConfigName;
 		std::string name;
 		
-		qlbase::InputFileFITS conf_file;
+		CTAUtils::InputFileFITS conf_file;
 		
 		///Array of strings that contain the following info: TELTYPEID TELTYPENAME CAMERATYPENAME MIRRORTYPENAME LOOKUP-TABLE-CONFIG-FILE
 		std::vector < std::vector<std::string> > configArray;

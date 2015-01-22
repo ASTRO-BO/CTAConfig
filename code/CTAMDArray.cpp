@@ -18,21 +18,11 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <ctautils/common_string.h>
 
 using namespace std;
 
 namespace CTAConfig {
-
-void split(vector<string> &tokens, const string &text, char sep) {
-	unsigned int start = 0, end = 0;
-	while ((end = text.find(sep, start)) != string::npos) {
-		tokens.push_back(text.substr(start, end - start));
-		start = end + 1;
-	}
-	tokens.push_back(text.substr(start));
-}
-
-
 
 string CTAMDArray::getArrayConfigName() {
 	return this->arrayConfigName;
@@ -63,7 +53,7 @@ void CTAMDArray::loadAdds(string filename)
 		//TELTYPEID TELTYPENAME CAMERATYPENAME MIRRORTYPENAME LOOKUP-TABLE-CONFIG-FILE
 		if(s.size() != 0 && s.at(0) != '#')
 		{
-			split(tokensInput, s, ' ');
+			CTAUtils::split(tokensInput, s, ' ');
 			configArray.push_back(tokensInput);
 			for(unsigned int i=0; i<tokensInput.size(); i++)
 			{

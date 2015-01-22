@@ -377,7 +377,7 @@ ConfigLoadMCFITS::ConfigLoadMCFITS(const string& confInputFileName) {
 		
 		
 	}
-	catch (qlbase::IOException& e) {
+	catch (CTAUtils::IOException& e) {
 		cout << "ERROR: File "<< confInputFileName <<" does not exist. Error code: " << e.getErrorCode() << endl;
 	}
 }
