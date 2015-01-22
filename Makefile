@@ -74,12 +74,12 @@ endif
 CC = gcc
 
 #Set INCPATH to add the inclusion paths
-INCPATH = -I $(INCLUDE_DIR) -I $(CTARTA)/include -L$(CTARTA)/lib
+INCPATH = -I $(INCLUDE_DIR)
 LIBS = -lstdc++ -lCTAUtils
 #Insert the optional parameter to the compiler. The CFLAGS could be changed externally by the user
 CFLAGS   = -g
 #Insert the implicit parameter to the compiler:
-ALL_CFLAGS = -m64 -fexceptions -Wall $(CFLAGS) $(INCPATH)
+ALL_CFLAGS = -fexceptions -Wall $(CFLAGS) $(INCPATH)
 #Use CPPFLAGS for the preprocessor
 CPPFLAGS = -std=c++11
 
@@ -152,16 +152,16 @@ DOC_SOURCE= $(addprefix $(DOXY_SOURCE_DIR)/, $(notdir $(SOURCE)))
 
 ####### 7) Only for library generation
 
-TARGET  = $(LIB_NAME).so.$(shell cat version)
+#TARGET  = $(LIB_NAME).so.$(shell cat version)
 TARGETA	= $(LIB_NAME).a
-TARGETD	= $(LIB_NAME).so.$(shell cat version)
-TARGET0	= $(LIB_NAME).so
-TARGET1	= $(LIB_NAME).so.$(shell cut version -f 1 -d '.')
-TARGET2	= $(LIB_NAME).so.$(shell cut version -f 1 -d '.').$(shell cut version -f 2 -d '.')
+#TARGETD	= $(LIB_NAME).so.$(shell cat version)
+#TARGET0	= $(LIB_NAME).so
+#TARGET1	= $(LIB_NAME).so.$(shell cut version -f 1 -d '.')
+#TARGET2	= $(LIB_NAME).so.$(shell cut version -f 1 -d '.').$(shell cut version -f 2 -d '.')
 
 ####### 8) Preliminar operations
 
-$(shell  cut $(INCLUDE_DIR)/$(VER_FILE_NAME) -f 3 > version)
+#$(shell  cut $(INCLUDE_DIR)/$(VER_FILE_NAME) -f 3 > version)
 #WARNING: use -d ' ' if in the version.h the separator is a space
 
 ####### 9) Pattern rules
@@ -183,8 +183,8 @@ $(DOXY_SOURCE_DIR)/%.cpp : %.cpp
 
 #all: compile the entire program.
 all:  exe lib
-		#only if conf directory is present:
-#$(SYMLINK) $(CONF_DIR) $(CONF_DEST_DIR)
+	@#only if conf directory is present:
+	@#$(SYMLINK) $(CONF_DIR) $(CONF_DEST_DIR)
 
 lib: staticlib 
 	
@@ -221,8 +221,8 @@ clean:
 	$(DEL_FILE) *~ core *.core
 	$(DEL_FILE) $(LIB_DESTDIR)/*.a
 	$(DEL_FILE) $(LIB_DESTDIR)/*.so*
-#	$(DEL_FILE) $(EXE_DESTDIR)/$(EXE_NAME1)	
-#	$(DEL_FILE) $(EXE_DESTDIR)/$(EXE_NAME2)
+	@#$(DEL_FILE) $(EXE_DESTDIR)/$(EXE_NAME1)	
+	@#$(DEL_FILE) $(EXE_DESTDIR)/$(EXE_NAME2)
 	$(DEL_FILE) version
 	$(DEL_FILE) prefix
 	$(DEL_FILE) $(PROJECT).dvi
@@ -242,35 +242,35 @@ distclean: clean
 #and so on to the file names where they should reside for actual use. 
 install: all
 	$(shell echo $(prefix) > prefix)
-	#test -d $(infodir) || mkdir -p $(infodir)	
+	@#test -d $(infodir) || mkdir -p $(infodir)	
 
-	# For library installation
-	#test -d $(libdir) || mkdir -p $(libdir)
-	#test -d $(includedir) || mkdir -p $(includedir)	
+	@# For library installation
+	@#test -d $(libdir) || mkdir -p $(libdir)
+	@#test -d $(includedir) || mkdir -p $(includedir)	
 	$(COPY_FILE) $(LIB_DESTDIR)/$(TARGETA) $(libdir)
-	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET0) $(libdir)
-	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET1) $(libdir)
-	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET2) $(libdir)
-	#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGETD) $(libdir)
+	@#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET0) $(libdir)
+	@#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET1) $(libdir)
+	@#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGET2) $(libdir)
+	@#$(COPY_FILE) $(LIB_DESTDIR)/$(TARGETD) $(libdir)
 	$(COPY_FILE) $(INCLUDE) $(includedir)
 	
-	# For exe installation
+	@# For exe installation
 	test -d $(bindir) || mkdir -p $(bindir)	
-#$(COPY_FILE) $(EXE_DESTDIR)/$(EXE_NAME1) $(bindir)
-#	$(COPY_FILE) $(EXE_DESTDIR)/$(EXE_NAME2) $(bindir)
+	@#$(COPY_FILE) $(EXE_DESTDIR)/$(EXE_NAME1) $(bindir)
+	@#	$(COPY_FILE) $(EXE_DESTDIR)/$(EXE_NAME2) $(bindir)
 	
-	#copy icon
-	#test -d $(icondir) || mkdir -p $(icondir)
-	#$(COPY_FILE) $(ICON_DIR)/$(ICON_NAME) $(icondir)
+	@#copy icon
+	@#test -d $(icondir) || mkdir -p $(icondir)
+	@#$(COPY_FILE) $(ICON_DIR)/$(ICON_NAME) $(icondir)
 
-	# For conf files installation
+	@# For conf files installation
 	test -d $(datadir)/$(CONF_DEST_DIR) || mkdir -p $(datadir)/$(CONF_DEST_DIR)
 	$(COPY_FILE) $(CONF_DIR)/* $(datadir)/$(CONF_DEST_DIR)
 
 
 #uninstall: delete all the installed files--the copies that the `install' target creates. 
 uninstall:
-	#For library uninstall
+	@#For library uninstall
 	$(DEL_FILE) $(libdir)/$(TARGETA)	
 	$(DEL_FILE) $(libdir)/$(TARGETD)
 	$(DEL_FILE) $(libdir)/$(TARGET0)
@@ -278,9 +278,9 @@ uninstall:
 	$(DEL_FILE) $(libdir)/$(TARGET2)
 	$(DEL_FILE) $(addprefix $(includedir)/, $(notdir $(INCLUDE)))
 	
-	# For exe uninstall
+	@# For exe uninstall
 	$(DEL_FILE) $(bindir)/$(EXE_NAME)
-	#$(DEL_FILE) $(icondir)/$(ICON_NAME)
+	@#$(DEL_FILE) $(icondir)/$(ICON_NAME)
 	
 #dist: create a distribution tar file for this program
 dist: all
