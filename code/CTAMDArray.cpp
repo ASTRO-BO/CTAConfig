@@ -76,10 +76,10 @@ CTAMDTelescopeType* CTAMDArray::getTelescopeType(int64_t telTypeID) {
 
 
 void CTAMDArray::loadConfig(string arrayName, string filenameArray, string filenameAdditionalInfos, string basedir) {
-	cout << "Load config add infos" << endl;
+	//cout << "Load config add infos" << endl;
 	filenameAdditionalInfos = basedir + filenameAdditionalInfos;
 	loadAdds(filenameAdditionalInfos);
-	cout << "Load config" <<endl;
+	//cout << "Load config" <<endl;
 	filenameArray = basedir + filenameArray;
 	ConfigLoadMCFITS config(filenameArray);
 	this->arrayConfigName = arrayName;
@@ -146,7 +146,7 @@ void CTAMDArray::loadConfig(string arrayName, string filenameArray, string filen
 	}
 	
 	for(unsigned int i=0; i<config.telescopes.size(); i++) {
-		cout << config.telescopes[i].TelID << " " << config.telescopes[i].telescopeType.TelType << endl;
+//		cout << config.telescopes[i].TelID << " " << config.telescopes[i].telescopeType.TelType << endl;
 		
 		CTAMDTelescopeType* telescopeType = getTelescopeType(config.telescopes[i].telescopeType.TelType);
 		CTAMDCoordinate3D* pos = new CTAMDCoordinate3D(config.telescopes[i].TelX, config.telescopes[i].TelY, config.telescopes[i].TelZ);
